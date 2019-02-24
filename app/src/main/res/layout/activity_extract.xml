@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray"
+    android:orientation="vertical"
+    tools:context=".welfare.extract.ExtractActivity">
+
+    <include
+        layout="@layout/public_navigation_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/default_20dp_hf"
+        android:paddingTop="@dimen/default_15dp_hf">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/default_15dp_hf"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_date" />
+
+            <TextView
+                android:id="@+id/tv_data"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/default_10dp_hf"
+                android:ellipsize="end"
+                android:maxWidth="@dimen/default_240dp_hf"
+                android:singleLine="true"
+                android:text=""
+                android:textColor="@color/black32"
+                android:textColorHint="@color/lightGray"
+                android:textSize="@dimen/personal_item_text_size" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_20dp_hf"
+            android:src="@drawable/pic_crown3" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/iv"
+            android:text=""
+            android:textColor="@color/black32"
+            android:textSize="@dimen/personal_item_text_size" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/default_10dp_hf"
+        android:background="@color/gray" />
+
+    <!--本日服务费-->
+    <RelativeLayout
+        android:id="@+id/rl_today_money"
+        style="@style/today_extract_item">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="本日服务费"
+            android:textColor="@color/black32"
+            android:textSize="@dimen/personal_item_text_size" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:gravity="center">
+            <!--字数问题-->
+            <TextView
+                android:id="@+id/tv_today_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxWidth="@dimen/default_240dp_hf"
+                android:singleLine="true"
+                android:text=""
+                android:textColor="@color/black32"
+                android:textColorHint="@color/lightGray"
+                android:textSize="@dimen/default_16sp_hf" />
+
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="枚"-->
+                <!--android:textColor="@color/ff9800"-->
+                <!--android:textSize="@dimen/default_16sp_hf" />-->
+        </LinearLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/default_0.5dp_hf"
+            android:layout_marginEnd="@dimen/default_15dp_hf"
+            android:layout_marginStart="@dimen/default_15dp_hf"
+            android:background="@color/end_trip_bg_e6" />
+    </LinearLayout>
+
+    <!--货品服务费-->
+    <RelativeLayout
+        android:id="@+id/rl_goods_money"
+        style="@style/today_extract_item">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="货品服务费"
+            android:textColor="@color/black32"
+            android:textSize="@dimen/personal_item_text_size" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:gravity="center">
+            <!--字数问题-->
+            <TextView
+                android:id="@+id/tv_goods_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxWidth="@dimen/default_240dp_hf"
+                android:singleLine="true"
+                android:text=""
+                android:textColor="@color/black32"
+                android:textColorHint="@color/lightGray"
+                android:textSize="@dimen/default_16sp_hf" />
+
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="枚"-->
+                <!--android:textColor="@color/ff9800"-->
+                <!--android:textSize="@dimen/default_16sp_hf" />-->
+        </LinearLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/default_0.5dp_hf"
+            android:layout_marginEnd="@dimen/default_15dp_hf"
+            android:layout_marginStart="@dimen/default_15dp_hf"
+            android:background="@color/end_trip_bg_e6" />
+    </LinearLayout>
+
+    <!--发票服务费-->
+    <RelativeLayout
+        android:id="@+id/rl_invoice_money"
+        style="@style/today_extract_item">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="发票服务费"
+            android:textColor="@color/black32"
+            android:textSize="@dimen/personal_item_text_size" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:gravity="center">
+            <!--字数问题-->
+            <TextView
+                android:id="@+id/tv_invoice_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxWidth="@dimen/default_240dp_hf"
+                android:singleLine="true"
+                android:text=""
+                android:textColor="@color/black32"
+                android:textColorHint="@color/lightGray"
+                android:textSize="@dimen/default_16sp_hf" />
+
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="枚"-->
+                <!--android:textColor="@color/ff9800"-->
+                <!--android:textSize="@dimen/default_16sp_hf" />-->
+        </LinearLayout>
+    </RelativeLayout>
+
+    <!--本周总服务费-->
+    <RelativeLayout
+        android:id="@+id/rl_total_money"
+        style="@style/today_extract_item"
+        android:layout_marginTop="@dimen/default_20dp_hf">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="本周总服务费"
+            android:textColor="@color/black32"
+            android:textSize="@dimen/personal_item_text_size" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:gravity="center">
+            <!--字数问题-->
+            <TextView
+                android:id="@+id/tv_total_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxWidth="@dimen/default_240dp_hf"
+                android:singleLine="true"
+                android:text=""
+                android:textColor="@color/black32"
+                android:textColorHint="@color/lightGray"
+                android:textSize="@dimen/default_16sp_hf" />
+
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="枚"-->
+                <!--android:textColor="@color/ff9800"-->
+                <!--android:textSize="@dimen/default_16sp_hf" />-->
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

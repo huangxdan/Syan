@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/default_20dp_hf"
+    android:paddingRight="@dimen/default_20dp_hf"
+    android:paddingTop="@dimen/default_90dp_hf">
+
+    <LinearLayout
+        android:id="@+id/ll_character"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_gradient_man"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icon_character" />
+
+        <TextView
+            android:id="@+id/tv_character"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/default_5dp_hf"
+            android:gravity="center"
+            android:text="我的经销商"
+            android:textColor="@color/black64"
+            android:textSize="@dimen/default_22sp_hf" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_welfare"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_30dp_hf"
+        android:background="@drawable/bg_gradient_man"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icon_wel" />
+
+        <TextView
+            android:id="@+id/tv_welfare"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/default_5dp_hf"
+            android:text="今日福利"
+            android:textColor="@color/black64"
+            android:textSize="@dimen/default_22sp_hf" />
+
+    </LinearLayout>
+
+</LinearLayout>

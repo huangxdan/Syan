@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/default_50dp_hf"
+        android:background="@color/gold_dfc289">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/icon_club_jingxuanneirong" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/default_0dp_hf"
+        android:layout_weight="1"
+        android:background="@color/loading_bg_color"
+        android:scaleType="centerInside"
+        android:src="@drawable/pic_default" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/default_5dp_hf"
+        android:background="@color/gray" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/default_0dp_hf"
+        android:layout_weight="1"
+        android:background="@color/loading_bg_color"
+        android:scaleType="centerInside"
+        android:src="@drawable/pic_default" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/default_5dp_hf"
+        android:background="@color/gray" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/default_0dp_hf"
+        android:layout_weight="1"
+        android:background="@color/loading_bg_color"
+        android:scaleType="centerInside"
+        android:src="@drawable/pic_default" />
+
+</LinearLayout>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:name="com.app.sy.syan.goods.GoodsFragment"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rl_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/default_245dp_hf"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/default_10dp_hf">
+
+        <ImageView
+            android:id="@+id/iv_goods"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/default_175dp_hf"
+            android:background="@color/loading_bg_color"
+            android:scaleType="centerCrop"
+            android:src="@drawable/pic_default" />
+
+        <TextView
+            android:id="@+id/tv_goods_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/iv_goods"
+            android:layout_marginLeft="@dimen/default_10dp_hf"
+            android:layout_marginRight="@dimen/default_10dp_hf"
+            android:layout_marginTop="@dimen/default_10dp_hf"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="@dimen/default_16sp_hf" />
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="@dimen/default_10dp_hf"
+            android:layout_marginRight="@dimen/default_10dp_hf">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="级推荐"
+                android:drawablePadding="@dimen/default_1dp_hf"
+                android:drawableLeft="@drawable/icon_mingxing"
+                android:textColor="@color/ff9800"
+                android:textSize="@dimen/default_14sp_hf" />
+
+            <TextView
+                android:id="@+id/tv_goods_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text=""
+                android:textColor="@color/ff9800"
+                android:textSize="@dimen/default_14sp_hf" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>

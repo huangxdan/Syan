@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <RelativeLayout
+        android:id="@+id/rl_love"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/default_50dp_hf"
+        android:background="@color/gold_dfc289">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="爱心捐赠"
+            android:textColor="@color/color_FF0000"
+            android:textSize="@dimen/default_17sp_hf" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/iv_love_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rl_love"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/default_30dp_hf"
+        android:src="@drawable/love_logo" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rl_love"
+        android:layout_marginTop="@dimen/default_120dp_hf"
+        android:layout_marginLeft="@dimen/default_50dp_hf"
+        android:src="@drawable/icon_zan_s_new"/>
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/iv_love_logo"
+        android:layout_marginTop="@dimen/default_30dp_hf"
+        android:layout_marginLeft="@dimen/default_20dp_hf"
+        android:src="@drawable/icon_zan_s_new"/>
+
+     <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/iv_love_logo"
+         android:layout_alignParentRight="true"
+         android:layout_marginRight="@dimen/default_20dp_hf"
+        android:layout_marginTop="@dimen/default_30dp_hf"
+        android:src="@drawable/icon_zan_s_new"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_total_money"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/default_50dp_hf"
+        android:layout_marginTop="@dimen/default_120dp_hf"
+        android:src="@drawable/icon_zan_s_new"/>
+
+    <TextView
+        android:id="@+id/tv_total_money"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:textSize="@dimen/default_15sp_hf"
+        android:textColor="@color/color_EE2C2C"
+        android:layout_marginTop="@dimen/default_30dp_hf"
+        android:layout_below="@id/iv_love_logo"
+        android:text="爱心总额"/>
+
+    <RelativeLayout
+        android:id="@+id/rl_money"
+        android:layout_width="@dimen/default_150dp_hf"
+        android:layout_height="@dimen/default_150dp_hf"
+        android:layout_below="@id/tv_total_money"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/icon_lianfashu"
+        android:layout_marginTop="@dimen/default_10dp_hf" >
+
+        <com.app.sy.syan.view.RaiseNumberAnimTextView
+            android:id="@+id/raiseNumberAnimTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:textSize="@dimen/default_15sp_hf"
+            android:layout_centerVertical="true"
+            android:text="" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/default_30dp_hf"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/default_35dp_hf">
+
+        <TextView
+            android:id="@+id/tv_year"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_time"
+            android:text=""
+            android:textSize="@dimen/default_16sp_hf" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/default_5dp_hf"
+            android:text="年"
+            android:textSize="@dimen/default_16sp_hf" />
+
+        <TextView
+            android:id="@+id/tv_mon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/default_5dp_hf"
+            android:background="@drawable/bg_time"
+            android:text=""
+            android:textSize="@dimen/default_16sp_hf" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/default_5dp_hf"
+            android:text="月"
+            android:textSize="@dimen/default_16sp_hf" />
+
+        <TextView
+            android:id="@+id/tv_day"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/default_5dp_hf"
+            android:background="@drawable/bg_time"
+            android:text=""
+            android:textSize="@dimen/default_16sp_hf" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/default_5dp_hf"
+            android:text="日"
+            android:textSize="@dimen/default_16sp_hf" />
+    </LinearLayout>
+
+</RelativeLayout>

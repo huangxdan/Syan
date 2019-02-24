@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <stroke
+        android:width="@dimen/default_1dp_hf"
+        android:color="@color/top_tab_yellow" />
+    <corners android:radius="@dimen/default_18.5dp_hf" />
+    <solid android:color="@color/transparent" />
+</shape>

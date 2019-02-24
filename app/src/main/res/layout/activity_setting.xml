@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray"
+    android:orientation="vertical"
+    tools:context=".setting.SettingActivity">
+
+    <include
+        layout="@layout/public_navigation_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <!--修改密码-->
+    <RelativeLayout
+        android:id="@+id/rl_modify_psw"
+        style="@style/person_Information_item"
+        android:layout_marginTop="@dimen/default_10dp_hf">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="修改密码"
+            android:textColor="@color/black32"
+            android:textSize="@dimen/personal_item_text_size" />
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/default_20dp_hf"
+        android:background="@color/gray" />
+
+    <!--修改收货地址-->
+    <RelativeLayout
+        android:id="@+id/rl_modify_address"
+        style="@style/person_Information_item" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="修改收货地址"
+            android:textColor="@color/black32"
+            android:textSize="@dimen/personal_item_text_size" />
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/default_20dp_hf"
+        android:background="@color/gray" />
+
+    <!--退出登录-->
+    <RelativeLayout
+        android:id="@+id/rl_exit"
+        style="@style/person_Information_item">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="退出登录"
+            android:textColor="@color/black32"
+            android:textSize="@dimen/personal_item_text_size" />
+
+    </RelativeLayout>
+</LinearLayout>

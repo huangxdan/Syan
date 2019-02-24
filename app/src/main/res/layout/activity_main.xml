@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/bottom_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/default_50.5dp_hf"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/default_0.5dp_hf"
+            android:background="@color/grayc8" />
+
+        <LinearLayout
+            android:id="@+id/ll_main_bar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/default_17dp_hf"
+            android:paddingRight="@dimen/default_17dp_hf">
+
+            <LinearLayout
+                android:id="@+id/ll_home"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/btn_home"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/icon_goods_s" />
+
+                <TextView
+                    android:id="@+id/tv_home"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="首页"
+                    android:textColor="@color/dfc289" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_note"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/btn_note"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/icon_note_d" />
+
+                <TextView
+                    android:id="@+id/tv_note"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="留言"
+                    android:textColor="@color/text_default_color" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_love"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/btn_love"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/icon_xin" />
+
+                <!--<TextView-->
+                    <!--android:id="@+id/tv_note"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="留言"-->
+                    <!--android:textColor="@color/text_default_color" />-->
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_welfare"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/btn_welfare"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/icon_wel_d" />
+
+                <TextView
+                    android:id="@+id/tv_welfare"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="公司福利"
+                    android:textColor="@color/text_default_color" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_mine"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/btn_mine"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/icon_ren_d" />
+
+                <TextView
+                    android:id="@+id/tv_mine"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="我的"
+                    android:textColor="@color/text_default_color" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/fragment_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottom_layout" />
+
+
+</RelativeLayout>

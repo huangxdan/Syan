@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".introduce.IntroduceActivity">
+
+    <include
+        layout="@layout/public_navigation_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <com.app.sy.syan.view.MyScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/default_20dp_hf"
+            android:paddingLeft="@dimen/default_10dp_hf"
+            android:paddingRight="@dimen/default_10dp_hf"
+            android:paddingTop="@dimen/default_10dp_hf">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/introduce_text1"
+                android:textColor="@color/black32"
+                android:textSize="@dimen/default_16sp_hf" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_5dp_hf"
+                android:text="@string/introduce_text2"
+                android:textColor="@color/black32"
+                android:textSize="@dimen/default_16sp_hf" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/pic_31" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView style="@style/introduce_icon" />
+
+                <TextView
+                    style="@style/introduce_tame"
+                    android:text="企业文化：用爱心传递温暖，用诚信创造辉煌。" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_5dp_hf">
+
+                <ImageView style="@style/introduce_icon" />
+
+                <TextView
+                    style="@style/introduce_tame"
+                    android:text="企业精神：崇善致美，修己惠人，笃行致远，砥砺前行。" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_5dp_hf">
+
+                <ImageView style="@style/introduce_icon" />
+
+                <TextView
+                    style="@style/introduce_tame"
+                    android:text="企业理念：诚信 创新 共享。" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_5dp_hf">
+
+                <ImageView style="@style/introduce_icon" />
+
+                <TextView
+                    style="@style/introduce_tame"
+                    android:text="企业口号：诚心，诚信，承载天下/精心创造完美，合作实现超越。" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_5dp_hf">
+
+                <ImageView style="@style/introduce_icon" />
+
+                <TextView
+                    style="@style/introduce_tame"
+                    android:text="企业目标：以市场为导向、以网络为基础、以人才为根本、以发展为前提，努力打造美业Online To Offline的绿色平台。" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_5dp_hf">
+
+                <ImageView style="@style/introduce_icon" />
+
+                <TextView
+                    style="@style/introduce_tame"
+                    android:text="企业团队：优秀的人才 正确的岗位 坚定的意识。" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_5dp_hf">
+
+                <ImageView style="@style/introduce_icon" />
+
+                <TextView
+                    style="@style/introduce_tame"
+                    android:text="企业使命：让天下人健康，美丽，无斑是我们公司为之奋斗不懈的使命。" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_15dp_hf"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="设立明确目标 ，不断追求上进"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/default_19sp_hf" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/default_5dp_hf"
+                    android:text="激发潜能创意 ，珍惜成功机遇"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/default_19sp_hf" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/default_5dp_hf"
+                    android:text="拥有梦想只是一种智力"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/default_19sp_hf" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/default_5dp_hf"
+                    android:text="实现梦想才是一种能力"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/default_19sp_hf" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </com.app.sy.syan.view.MyScrollView>
+
+</LinearLayout>

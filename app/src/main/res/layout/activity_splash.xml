@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="@drawable/pic_11"
+    tools:context=".splash.SplashActivity">
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/activity_guide_viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible" />
+
+    <RelativeLayout
+        android:id="@+id/splash_view_bg_icon_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/splash_tv_countdown"
+            android:layout_width="@dimen/default_60dp_hf"
+            android:layout_height="@dimen/default_30dp_hf"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="@dimen/default_10dp_hf"
+            android:layout_marginTop="@dimen/default_75dp_hf"
+            android:background="@drawable/splash_ad_skip_backgroud"
+            android:gravity="center"
+            android:text="跳过"
+            android:textColor="#FFFFFF"
+            android:textSize="@dimen/default_14dp_hf"
+            android:visibility="invisible" />
+    </RelativeLayout>
+</RelativeLayout>

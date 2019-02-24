@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <include
+        layout="@layout/public_navigation_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <!--名字-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/default_25dp_hf"
+        android:layout_marginRight="@dimen/default_25dp_hf"
+        android:layout_marginTop="@dimen/default_70dp_hf"
+        android:background="@drawable/bg_character"
+        android:padding="@dimen/default_10dp_hf">
+
+        <TextView
+            android:id="@+id/tv_br"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@color/white"
+            android:textSize="@dimen/personal_item_text_size" />
+
+        <TextView
+            android:id="@+id/tv_br_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_br"
+            android:layout_marginTop="@dimen/default_2dp_hf"
+            android:text=""
+            android:textColor="@color/white"
+            android:textColorHint="@color/lightGray"
+            android:textSize="@dimen/personal_item_text_size" />
+
+        <TextView
+            android:id="@+id/tv_br_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/tv_br_number"
+            android:layout_marginTop="@dimen/default_5dp_hf"
+            android:text=""
+            android:textColor="@color/white"
+            android:textSize="@dimen/personal_item_text_size" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="@dimen/default_2dp_hf"
+            android:src="@drawable/icon_mingxing" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_tgr"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/default_45dp_hf"
+        android:layout_marginRight="@dimen/default_25dp_hf"
+        android:layout_marginTop="@dimen/default_10dp_hf"
+        android:background="@drawable/pic_kuang"
+        android:padding="@dimen/default_10dp_hf">
+
+        <TextView
+            android:id="@+id/tv_tgr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@color/black32"
+            android:textSize="@dimen/personal_item_text_size" />
+
+        <!--字数问题-->
+        <TextView
+            android:id="@+id/tv_tjr_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_tgr"
+            android:layout_marginTop="@dimen/default_5dp_hf"
+            android:text=""
+            android:textColor="@color/gold_dfc289"
+            android:textSize="@dimen/personal_item_text_size" />
+
+        <TextView
+            android:id="@+id/tv_tjr_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/tv_tjr_number"
+            android:layout_marginTop="@dimen/default_5dp_hf"
+            android:text=""
+            android:textColor="@color/black32"
+            android:textSize="@dimen/personal_item_text_size" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="@dimen/default_2dp_hf"
+            android:src="@drawable/icon_mingxing" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_jdr"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/default_45dp_hf"
+        android:layout_marginRight="@dimen/default_25dp_hf"
+        android:layout_marginTop="@dimen/default_10dp_hf"
+        android:background="@drawable/pic_kuang"
+        android:padding="@dimen/default_10dp_hf">
+
+        <TextView
+            android:id="@+id/tv_jdr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@color/black32"
+            android:textSize="@dimen/personal_item_text_size" />
+
+        <TextView
+            android:id="@+id/tv_jdr_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_jdr"
+            android:layout_marginTop="@dimen/default_5dp_hf"
+            android:text=""
+            android:textColor="@color/gold_dfc289"
+            android:textSize="@dimen/personal_item_text_size" />
+
+        <TextView
+            android:id="@+id/tv_jdr_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/tv_jdr_number"
+            android:layout_marginTop="@dimen/default_5dp_hf"
+            android:text=""
+            android:textColor="@color/black32"
+            android:textSize="@dimen/personal_item_text_size" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="@dimen/default_2dp_hf"
+            android:src="@drawable/icon_mingxing" />
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,47 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    
+    repositories {
+        jcenter()
+//        maven {
+//            url 'https://maven.google.com/'
+//            name 'Google'
+//        }
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.2.2'
+//        classpath 'org.greenrobot:greendao-gradle-plugin:3.2.0'
+        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+//        maven {
+//            url 'https://maven.google.com/'
+//            name 'Google'
+//        }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+ext{
+    daggerVersion = '2.6'
+    retrofitVersion = '2.1.0'
+    okhttpVersion = '3.4.1'
+    butterknife = '8.2.1'
+    greenDAOVersion = '3.2.0'
+    guavaVersion = '18.0'
+    picassoVersion = '2.5.2'
+    circularVersion = '1.2.0'
+    glideVersion = '3.7.0'
+    eventbusVersion = '3.0.0'
+    rxJavaVersion = '1.1.6'
+    rxAndroidVersion = '1.2.1'
+}

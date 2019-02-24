@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/transparent"
+    android:gravity="center"
+    android:orientation="vertical">
+    <!--android:background="@color/whats_on_separator"-->
+    <FrameLayout
+        android:id="@+id/fl_dialog_loading_bg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent">
+
+        <ProgressBar
+            android:id="@+id/iv_loading_bg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminateTint="@color/yellowfccb26"
+            android:scaleType="centerCrop" />
+    </FrameLayout>
+
+</LinearLayout>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/ll_no_net"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/gray"
+        android:clickable="true"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/default_100dp_hf"
+            android:src="@drawable/no_net" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="@dimen/default_56dp_hf"
+            android:layout_marginTop="@dimen/default_20dp_hf"
+            android:text="@string/text_noNet"
+            android:textColor="@color/lightGray"
+            android:textSize="@dimen/default_14sp_hf" />
+
+
+        <Button
+            android:id="@+id/btn_reload"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="@dimen/default_214dp_hf"
+            android:layout_height="@dimen/default_38dp_hf"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/loadagain_selector"
+            android:text="重新加载"
+            android:textColor="@color/lightGray"
+            android:textSize="@dimen/default_14sp_hf" />
+        <!---->
+        <!---->
+    </LinearLayout>
+
+</LinearLayout>

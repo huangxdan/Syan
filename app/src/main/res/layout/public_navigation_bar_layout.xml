@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/ll_navi_root"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/default_50dp_hf"
+        android:background="@color/dfc289">
+
+        <RelativeLayout
+            android:id="@+id/pub_navi_left_item"
+            android:layout_width="@dimen/default_85dp_hf"
+            android:layout_height="@dimen/default_50dp_hf">
+
+                <ImageView
+                    android:id="@+id/pub_navi_left_item_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/default_15dp_hf"
+                    android:duplicateParentState="true"
+                    android:src="@drawable/navigator_fanhui_selector" />
+
+                <TextView
+                    android:id="@+id/pub_navi_left_item_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/default_15dp_hf"
+                    android:singleLine="true"
+                    android:text=""
+                    android:textColor="@color/common_text_black_selector"
+                    android:textSize="@dimen/default_16sp_hf" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/pub_navi_center_item"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/default_50dp_hf"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/pub_navi_center_item_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:singleLine="true"
+                    android:text=""
+                    android:textColor="@color/lightBlack"
+                    android:textSize="@dimen/default_16sp_hf" />
+
+                <ImageView
+                    android:id="@+id/pub_navi_center_item_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/icon_fanhui" />
+            </LinearLayout>
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/pub_navi_right_item"
+            android:layout_width="@dimen/default_85dp_hf"
+            android:layout_height="@dimen/default_50dp_hf">
+
+            <ImageView
+                android:id="@+id/pub_navi_right_item_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/default_15dp_hf"
+                android:duplicateParentState="true"
+                android:src="@drawable/icon_fanhui" />
+
+            <TextView
+                android:id="@+id/pub_navi_right_item_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/default_15dp_hf"
+                android:duplicateParentState="true"
+                android:singleLine="true"
+                android:text=""
+                android:textColor="@color/common_text_black_selector"
+                android:textSize="@dimen/default_16sp_hf" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <!--<View-->
+        <!--android:id="@+id/devision_view"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="@dimen/default_0.5dp_hf"-->
+        <!--android:layout_below="@id/ll_navi_root"-->
+        <!--android:background="@color/whiteDC" />-->
+
+</RelativeLayout>

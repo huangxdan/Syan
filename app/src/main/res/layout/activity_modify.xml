@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".mine.modify.ModifyActivity">
+
+    <include
+        layout="@layout/public_navigation_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/default_70dp_hf"
+        android:layout_marginLeft="@dimen/default_20dp_hf"
+        android:layout_marginRight="@dimen/default_20dp_hf"
+        android:layout_marginTop="@dimen/default_40dp_hf"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="旧密码："
+            android:textColor="@color/black64"
+            android:textSize="@dimen/default_16sp_hf" />
+
+        <EditText
+            android:id="@+id/et_old_pwd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="请输入旧密码"
+            android:singleLine="true"
+            android:textColor="@color/black64"
+            android:textColorHint="@color/grayc8"
+            android:textCursorDrawable="@null"
+            android:textSize="@dimen/default_16sp_hf"
+            android:theme="@style/myEditText" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/default_70dp_hf"
+        android:layout_marginLeft="@dimen/default_20dp_hf"
+        android:layout_marginRight="@dimen/default_20dp_hf"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="新密码："
+            android:textColor="@color/black64"
+            android:textSize="@dimen/default_16sp_hf" />
+
+        <EditText
+            android:id="@+id/et_new_pwd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="请输入新密码"
+            android:singleLine="true"
+            android:textColor="@color/black64"
+            android:textColorHint="@color/grayc8"
+            android:textCursorDrawable="@null"
+            android:textSize="@dimen/default_16sp_hf"
+            android:theme="@style/myEditText" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_40dp_hf"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:id="@+id/btn_note"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/default_30dp_hf"
+            android:layout_marginRight="@dimen/default_30dp_hf"
+            android:background="@drawable/loadagain_selector"
+            android:gravity="center"
+            android:paddingBottom="@dimen/default_10dp_hf"
+            android:paddingTop="@dimen/font_size_level_10"
+            android:text="确认修改"
+            android:textColor="@color/black64"
+            android:textSize="@dimen/default_20sp_hf" />
+    </LinearLayout>
+
+</LinearLayout>

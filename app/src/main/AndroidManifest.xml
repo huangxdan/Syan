@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.app.sy.syan">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
+    <application
+        android:name=".SyanApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/app_icon"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".main.MainActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.start" />
+        <activity
+            android:name=".welfare.extract.ExtractActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.start" />
+        <activity
+            android:name=".welfare.character.CharacterActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.start" />
+        <activity
+            android:name=".login.LoginActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.start"
+            android:windowSoftInputMode="stateVisible|adjustResize" />
+        <activity
+            android:name=".mine.modify.ModifyActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.start" />
+        <activity
+            android:name=".goods.detail.GoodsDetailActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.start" />
+        <activity
+            android:name=".splash.SplashActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.start">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".setting.SettingActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.start" />
+        <activity
+            android:name=".introduce.IntroduceActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.start" />
+        <activity
+            android:name=".goods.GoodsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.start" />
+        <activity
+            android:name=".syan.SYanActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mine.address.ModifyAddressActivity"
+            android:screenOrientation="portrait" />
+    </application>
+
+</manifest>

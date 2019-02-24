@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/p90_dfc289"
+    android:orientation="horizontal">
+
+    <RelativeLayout
+        android:id="@+id/rl_note"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/default_50dp_hf"
+        android:background="@color/gold_dfc289">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="留言"
+            android:textColor="@color/lightBlack"
+            android:textSize="@dimen/default_16sp_hf" />
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/default_20dp_hf"
+        android:layout_marginTop="@dimen/default_20dp_hf"
+        android:layout_below="@id/rl_note"
+        android:src="@drawable/icon_note" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/default_30dp_hf"
+        android:layout_below="@id/rl_note"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/default_0dp_hf"
+            android:layout_marginLeft="@dimen/default_30dp_hf"
+            android:layout_marginRight="@dimen/default_30dp_hf"
+            android:layout_weight="5"
+            android:background="@drawable/note"
+            android:padding="@dimen/default_15dp_hf">
+
+            <EditText
+                android:id="@+id/et_note"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:hint="@string/note_hint"
+                android:lineSpacingExtra="@dimen/default_7dp_hf"
+                android:textColor="@color/black64"
+                android:textColorHint="@color/grayc8"
+                android:textSize="@dimen/default_16sp_hf" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/default_0dp_hf"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/btn_note"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/loadagain_selector"
+                android:paddingBottom="@dimen/default_10dp_hf"
+                android:paddingLeft="@dimen/default_60dp_hf"
+                android:paddingRight="@dimen/default_60dp_hf"
+                android:paddingTop="@dimen/font_size_level_10"
+                android:text="提交"
+                android:textColor="@color/black64"
+                android:textSize="@dimen/default_20sp_hf" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>
