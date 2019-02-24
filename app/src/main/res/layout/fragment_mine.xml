@@ -27,10 +27,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:paddingTop="@dimen/default_10dp_hf"
                     android:paddingBottom="@dimen/default_10dp_hf"
                     android:paddingLeft="@dimen/default_10dp_hf"
-                    android:paddingRight="@dimen/default_10dp_hf" >
+                    android:paddingRight="@dimen/default_10dp_hf"
+                    android:paddingTop="@dimen/default_10dp_hf">
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -100,6 +100,88 @@
                 android:layout_height="@dimen/default_10dp_hf"
                 android:background="@color/gray" />
 
+            <!--我的购物车-->
+            <RelativeLayout
+                android:id="@+id/rl_car"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:padding="@dimen/default_15dp_hf">
+
+                <TextView
+                    android:id="@+id/tv_car"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="我的购物车"
+                    android:textColor="@color/black32"
+                    android:textSize="@dimen/personal_item_text_size" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/default_15dp_hf"
+                    android:src="@drawable/icon_yfh" />
+
+            </RelativeLayout>
+
+            <!--分割线-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/default_0.5dp_hf"
+                    android:layout_marginEnd="@dimen/default_15dp_hf"
+                    android:layout_marginStart="@dimen/default_15dp_hf"
+                    android:background="@color/end_trip_bg_e6" />
+            </LinearLayout>
+
+            <!--我的订单-->
+            <RelativeLayout
+                android:id="@+id/rl_order"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:padding="@dimen/default_15dp_hf">
+
+                <TextView
+                    android:id="@+id/tv_order"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="我的订单"
+                    android:textColor="@color/black32"
+                    android:textSize="@dimen/personal_item_text_size" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/default_15dp_hf"
+                    android:src="@drawable/icon_yfh" />
+
+            </RelativeLayout>
+
+            <!--分割线-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/default_0.5dp_hf"
+                    android:layout_marginEnd="@dimen/default_15dp_hf"
+                    android:layout_marginStart="@dimen/default_15dp_hf"
+                    android:background="@color/end_trip_bg_e6" />
+            </LinearLayout>
+
             <!--身份证号-->
             <RelativeLayout
                 android:id="@+id/rl_card_number"
@@ -134,6 +216,7 @@
                 </LinearLayout>
             </RelativeLayout>
 
+            <!--分割线-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -146,7 +229,8 @@
                     android:layout_marginStart="@dimen/default_15dp_hf"
                     android:background="@color/end_trip_bg_e6" />
             </LinearLayout>
-            <!--身份证号-->
+
+            <!--银行卡号-->
             <RelativeLayout
                 android:id="@+id/rl_back_card_number"
                 style="@style/person_Information_item">
@@ -180,6 +264,7 @@
                 </LinearLayout>
             </RelativeLayout>
 
+            <!--分割线-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -193,6 +278,7 @@
                     android:background="@color/end_trip_bg_e6" />
             </LinearLayout>
 
+            <!--所属银行-->
             <RelativeLayout
                 android:id="@+id/rl_affiliated_bank_number"
                 style="@style/person_Information_item">
@@ -226,6 +312,7 @@
                 </LinearLayout>
             </RelativeLayout>
 
+            <!--分割线-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -239,6 +326,7 @@
                     android:background="@color/end_trip_bg_e6" />
             </LinearLayout>
 
+            <!--开户行-->
             <RelativeLayout
                 android:id="@+id/rl_opening_bank_number"
                 style="@style/person_Information_item">
@@ -272,6 +360,7 @@
                 </LinearLayout>
             </RelativeLayout>
 
+            <!--分割线-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -285,6 +374,7 @@
                     android:background="@color/end_trip_bg_e6" />
             </LinearLayout>
 
+            <!--收货地址-->
             <RelativeLayout
                 android:id="@+id/rl_address"
                 android:layout_width="match_parent"

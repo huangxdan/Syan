@@ -2,7 +2,6 @@ package com.app.sy.syan.mine;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -18,11 +17,9 @@ import com.app.sy.syan.R;
 import com.app.sy.syan.SyanApplication;
 import com.app.sy.syan.data.StaffInfo;
 import com.app.sy.syan.data.event.ModifyAddressEvent;
-import com.app.sy.syan.login.LoginActivity;
-import com.app.sy.syan.mine.modify.ModifyActivity;
+import com.app.sy.syan.mine.car.CarActivity;
+import com.app.sy.syan.mine.order.OrderActivity;
 import com.app.sy.syan.setting.SettingActivity;
-import com.app.sy.syan.util.ActivityManager;
-import com.app.sy.syan.util.PreferenceUtils;
 import com.app.sy.syan.view.LoadingDialog;
 import com.app.sy.syan.view.MyScrollView;
 import com.jakewharton.rxbinding.view.RxView;
@@ -77,6 +74,10 @@ public class MineFragment extends Fragment implements MineContract.View {
     Button btnReload;
     @BindView(R.id.ll_no_net)
     LinearLayout llNoNet;
+    @BindView(R.id.rl_car)
+    RelativeLayout rlCar;
+    @BindView(R.id.rl_order)
+    RelativeLayout rlOrder;
 
 
     private LoadingDialog mLoadingDialog;
@@ -131,6 +132,26 @@ public class MineFragment extends Fragment implements MineContract.View {
                         }
                     }
                 });
+
+        RxView.clicks(rlCar)
+                .throttleFirst(1, TimeUnit.SECONDS)
+                .subscribe(new Action1<Void>() {
+                    @Override
+                    public void call(Void aVoid) {
+                        getActivity().startActivity(new Intent(getContext(), CarActivity.class));
+                    }
+                });
+
+
+        RxView.clicks(rlOrder)
+                .throttleFirst(1, TimeUnit.SECONDS)
+                .subscribe(new Action1<Void>() {
+                    @Override
+                    public void call(Void aVoid) {
+                        getActivity().startActivity(new Intent(getContext(), OrderActivity.class));
+                    }
+                });
+
     }
 
 
@@ -186,4 +207,5 @@ public class MineFragment extends Fragment implements MineContract.View {
             }
         }
     }
+
 }

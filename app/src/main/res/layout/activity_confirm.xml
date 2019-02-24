@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".mine.address.ModifyAddressActivity">
+
+    <include
+        layout="@layout/public_navigation_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/default_20dp_hf"
+        android:layout_marginRight="@dimen/default_20dp_hf"
+        android:layout_marginTop="@dimen/default_50dp_hf"
+        android:background="@drawable/bg_modify_address"
+        android:gravity="center_vertical"
+        android:padding="@dimen/default_15dp_hf">
+
+        <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="收货地址："-->
+        <!--android:textColor="@color/black64"-->
+        <!--android:textSize="@dimen/default_16sp_hf" />-->
+
+        <EditText
+            android:id="@+id/et_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:hint="请输入收货地址"
+            android:textColor="@color/black64"
+            android:textColorHint="@color/grayc8"
+            android:textSize="@dimen/default_16sp_hf"
+            android:theme="@style/myEditText" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_40dp_hf"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:id="@+id/btn_note"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/default_30dp_hf"
+            android:layout_marginRight="@dimen/default_30dp_hf"
+            android:background="@drawable/loadagain_selector"
+            android:gravity="center"
+            android:paddingBottom="@dimen/default_10dp_hf"
+            android:paddingTop="@dimen/font_size_level_10"
+            android:text="确认修改"
+            android:textColor="@color/black64"
+            android:textSize="@dimen/default_20sp_hf" />
+    </LinearLayout>
+</LinearLayout>

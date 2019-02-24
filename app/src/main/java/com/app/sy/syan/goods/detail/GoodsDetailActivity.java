@@ -16,11 +16,15 @@ import com.app.sy.syan.base.BaseActivity;
 import com.app.sy.syan.data.GoodsInfo;
 import com.app.sy.syan.view.NavigationBar;
 import com.bumptech.glide.Glide;
+import com.jakewharton.rxbinding.view.RxView;
+
+import java.util.concurrent.TimeUnit;
 
 import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import rx.functions.Action1;
 
 public class GoodsDetailActivity extends BaseActivity implements GoodsDetailContract.View, NavigationBar.NavigationBarInteface {
     public static final String PRODUCT_ID = "productId";
@@ -74,6 +78,12 @@ public class GoodsDetailActivity extends BaseActivity implements GoodsDetailCont
     TextView tvFangfa;
     @BindView(R.id.rl_fangfa)
     RelativeLayout rlFangfa;
+    @BindView(R.id.tv_detail_cart_num)
+    TextView tvDetailCartNum;
+    @BindView(R.id.tv_detail_add_to_shop_cart)
+    TextView tvDetailAddToShopCart;
+    @BindView(R.id.tv_detail_buy_now)
+    TextView tvDetailBuyNow;
 
     private Context mContext;
     private String productId;
@@ -91,6 +101,7 @@ public class GoodsDetailActivity extends BaseActivity implements GoodsDetailCont
                 .build().inject(this);
 
         initView();
+        bindListener();
 
         Intent intent = getIntent();
         productId = intent.getStringExtra(PRODUCT_ID);
@@ -108,6 +119,28 @@ public class GoodsDetailActivity extends BaseActivity implements GoodsDetailCont
         navigationBar.setRightItemHidden();
         navigationBar.setCenterTitle("商品详情");
         navigationBar.setCenterItemIconHidden();
+    }
+
+    private void bindListener() {
+        //加入购物车
+        RxView.clicks(tvDetailAddToShopCart)
+                .throttleFirst(1, TimeUnit.SECONDS)
+                .subscribe(new Action1<Void>() {
+                    @Override
+                    public void call(Void aVoid) {
+
+                    }
+                });
+
+        //立即购买
+        RxView.clicks(tvDetailBuyNow)
+                .throttleFirst(1, TimeUnit.SECONDS)
+                .subscribe(new Action1<Void>() {
+                    @Override
+                    public void call(Void aVoid) {
+
+                    }
+                });
     }
 
     @Override

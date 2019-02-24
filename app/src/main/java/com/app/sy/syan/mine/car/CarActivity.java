@@ -1,4 +1,4 @@
-package com.app.sy.syan.mine.address;
+package com.app.sy.syan.mine.car;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -15,6 +15,7 @@ import com.app.sy.syan.R;
 import com.app.sy.syan.SyanApplication;
 import com.app.sy.syan.base.BaseActivity;
 import com.app.sy.syan.data.event.ModifyAddressEvent;
+import com.app.sy.syan.mine.address.ModifyAddressPresenter;
 import com.app.sy.syan.view.NavigationBar;
 import com.jakewharton.rxbinding.view.RxView;
 
@@ -28,7 +29,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import rx.functions.Action1;
 
-public class ModifyAddressActivity extends BaseActivity implements ModifyAddressContract.View, NavigationBar.NavigationBarInteface {
+public class CarActivity extends BaseActivity implements CarContract.View, NavigationBar.NavigationBarInteface {
 
     @BindView(R.id.pub_navi_left_item_icon)
     ImageView pubNaviLeftItemIcon;
@@ -56,18 +57,18 @@ public class ModifyAddressActivity extends BaseActivity implements ModifyAddress
     TextView btnNote;
 
     @Inject
-    ModifyAddressPresenter modifyPresenter;
+    CarPresenter mPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_modify_address);
+        setContentView(R.layout.activity_car);
         ButterKnife.bind(this);
         initView();
 
-        DaggerModifyAddressComponent.builder()
+        DaggerCarComponent.builder()
                 .applicationComponent(SyanApplication.get(this).getAppComponent())
-                .modifyAddressModule(new ModifyAddressModule(this))
+                .carModule(new CarModule(this))
                 .build()
                 .inject(this);
 
@@ -76,47 +77,25 @@ public class ModifyAddressActivity extends BaseActivity implements ModifyAddress
                 .subscribe(new Action1<Void>() {
                     @Override
                     public void call(Void aVoid) {
-                        executeModify();
+
                     }
                 });
     }
 
-    private void executeModify() {
-        String address = etAddress.getText().toString();
-        if (TextUtils.isEmpty(address)) {
-            showToast("收货地址不能为空");
-            return;
-        }
 
-        if (modifyPresenter != null) {
-            modifyPresenter.modify(address);
-        }
-    }
 
     private void initView() {
         NavigationBar navigationBar = new NavigationBar(this, this);
         navigationBar.setCenterItemIconShow();
         navigationBar.setLeftItemTitleHidden();
         navigationBar.setRightItemHidden();
-        navigationBar.setCenterTitle("修改收货地址");
+        navigationBar.setCenterTitle("购物车");
         navigationBar.setCenterItemIconHidden();
     }
 
     @Override
-    public void modifySuccess() {
-        showToast("修改成功");
-        EventBus.getDefault().post(new ModifyAddressEvent(true));
+    public void bindData() {
 
-        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-        // 隐藏软键盘
-        imm.hideSoftInputFromWindow(getWindow().getDecorView().getWindowToken(), 0);
-
-//        for (Activity activity : ActivityManager.instance().getActivities()) {
-//            if (activity instanceof SettingActivity) {
-//                activity.finish();
-//            }
-//        }
-        finish();
     }
 
     @Override
@@ -131,15 +110,11 @@ public class ModifyAddressActivity extends BaseActivity implements ModifyAddress
 
     @Override
     public void showToast(String msg) {
-        Toast.makeText(ModifyAddressActivity.this, msg, Toast.LENGTH_SHORT).show();
+        Toast.makeText(CarActivity.this, msg, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onNavigationLeftItemClick() {
-        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-        // 隐藏软键盘
-        imm.hideSoftInputFromWindow(getWindow().getDecorView().getWindowToken(), 0);
-
         finish();
     }
 
