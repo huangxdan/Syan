@@ -1,10 +1,15 @@
 package com.app.sy.syan.goods.detail;
 
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Point;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.animation.OvershootInterpolator;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -14,6 +19,8 @@ import com.app.sy.syan.R;
 import com.app.sy.syan.SyanApplication;
 import com.app.sy.syan.base.BaseActivity;
 import com.app.sy.syan.data.GoodsInfo;
+import com.app.sy.syan.mine.order.confirm.ConfirmActivity;
+import com.app.sy.syan.view.BezierView;
 import com.app.sy.syan.view.NavigationBar;
 import com.bumptech.glide.Glide;
 import com.jakewharton.rxbinding.view.RxView;
@@ -78,6 +85,10 @@ public class GoodsDetailActivity extends BaseActivity implements GoodsDetailCont
     TextView tvFangfa;
     @BindView(R.id.rl_fangfa)
     RelativeLayout rlFangfa;
+    @BindView(R.id.rl_add_car)
+    RelativeLayout rlAddCar;
+    @BindView(R.id.iv_car_icon)
+    ImageView ivCarIcon;
     @BindView(R.id.tv_detail_cart_num)
     TextView tvDetailCartNum;
     @BindView(R.id.tv_detail_add_to_shop_cart)
@@ -128,7 +139,7 @@ public class GoodsDetailActivity extends BaseActivity implements GoodsDetailCont
                 .subscribe(new Action1<Void>() {
                     @Override
                     public void call(Void aVoid) {
-
+                        showAddCartSuccessAnim(5);
                     }
                 });
 
@@ -138,7 +149,7 @@ public class GoodsDetailActivity extends BaseActivity implements GoodsDetailCont
                 .subscribe(new Action1<Void>() {
                     @Override
                     public void call(Void aVoid) {
-
+                        startActivity(new Intent(GoodsDetailActivity.this, ConfirmActivity.class));
                     }
                 });
     }
@@ -168,6 +179,53 @@ public class GoodsDetailActivity extends BaseActivity implements GoodsDetailCont
         }
 
         tvDescInfo.setText(goodsInfo.getProductDescription());
+    }
+
+    /**
+     * 加入购物车成功动画
+     */
+    public void showAddCartSuccessAnim(final int num) {
+        int addCartAnimStartPosition[] = new int[2];//贝塞尔曲线起点
+        int addCartAnimEndPosition[] = new int[2];//贝塞尔曲线终点
+        BezierView addCartBezierView;//加入购物车贝塞尔曲线
+        tvDetailAddToShopCart.getLocationInWindow(addCartAnimStartPosition);
+        addCartAnimStartPosition[0] += tvDetailAddToShopCart.getWidth() / 2;
+        rlAddCar.getLocationInWindow(addCartAnimEndPosition);
+        addCartBezierView = new BezierView(this);
+        addCartBezierView.setStartPosition(new Point(addCartAnimStartPosition[0], addCartAnimStartPosition[1]));
+        ViewGroup rootView = (ViewGroup) this.getWindow().getDecorView();
+        rootView.addView(addCartBezierView);
+        addCartBezierView.setEndPosition(new Point(addCartAnimEndPosition[0], addCartAnimEndPosition[1]));
+        addCartBezierView.startBeizerAnimation();
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                ObjectAnimator animator = ObjectAnimator.ofFloat(ivCarIcon, "rotation", 0f, 50f, 0f);
+                animator.setInterpolator(new OvershootInterpolator());
+                animator.setDuration(600);
+                animator.start();
+                setCartNumb(num);
+            }
+        }, 600);
+    }
+
+    /**
+     * 设置购物车数量
+     *
+     * @param num
+     */
+    public void setCartNumb(int num) {
+        if (num > 0) {
+            tvDetailCartNum.setVisibility(View.VISIBLE);
+            if (num > 99) {
+                tvDetailCartNum.setText("100");
+            } else {
+                tvDetailCartNum.setText(num + "");
+            }
+        } else {
+            tvDetailCartNum.setVisibility(View.GONE);
+        }
     }
 
     @Override

@@ -1,7 +1,8 @@
 package com.app.sy.syan.mine.order.confirm;
 
 import android.os.Bundle;
-import android.widget.EditText;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -11,10 +12,7 @@ import android.widget.Toast;
 import com.app.sy.syan.R;
 import com.app.sy.syan.SyanApplication;
 import com.app.sy.syan.base.BaseActivity;
-import com.app.sy.syan.mine.order.DaggerOrderComponent;
-import com.app.sy.syan.mine.order.OrderContract;
-import com.app.sy.syan.mine.order.OrderModule;
-import com.app.sy.syan.mine.order.OrderPresenter;
+import com.app.sy.syan.util.RecyclerAdapterWithHF;
 import com.app.sy.syan.view.NavigationBar;
 import com.jakewharton.rxbinding.view.RxView;
 
@@ -48,13 +46,26 @@ public class ConfirmActivity extends BaseActivity implements ConfirmContract.Vie
     RelativeLayout pubNaviRightItem;
     @BindView(R.id.ll_navi_root)
     LinearLayout llNaviRoot;
-    @BindView(R.id.et_address)
-    EditText etAddress;
-    @BindView(R.id.btn_note)
-    TextView btnNote;
+    @BindView(R.id.tv_receiver)
+    TextView tvReceiver;
+    @BindView(R.id.tv_receiver_phone)
+    TextView tvReceiverPhone;
+    @BindView(R.id.tv_receiver_address)
+    TextView tvReceiverAddress;
+    @BindView(R.id.recycleview)
+    RecyclerView recycleview;
+    @BindView(R.id.ll_pay)
+    LinearLayout llPay;
 
     @Inject
     ConfirmPresenter mPresenter;
+    @Inject
+    LinearLayoutManager linearLayoutManager;
+    @Inject
+    RecyclerAdapterWithHF recyclerAdapterWithHF;
+    @Inject
+    ConfirmGoodsAdapter mAdapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +80,10 @@ public class ConfirmActivity extends BaseActivity implements ConfirmContract.Vie
                 .build()
                 .inject(this);
 
-        RxView.clicks(btnNote)
+        recycleview.setLayoutManager(linearLayoutManager);
+        recycleview.setAdapter(recyclerAdapterWithHF);
+
+        RxView.clicks(llPay)
                 .throttleFirst(1, TimeUnit.SECONDS)
                 .subscribe(new Action1<Void>() {
                     @Override
@@ -80,13 +94,12 @@ public class ConfirmActivity extends BaseActivity implements ConfirmContract.Vie
     }
 
 
-
     private void initView() {
         NavigationBar navigationBar = new NavigationBar(this, this);
         navigationBar.setCenterItemIconShow();
         navigationBar.setLeftItemTitleHidden();
         navigationBar.setRightItemHidden();
-        navigationBar.setCenterTitle("购物车");
+        navigationBar.setCenterTitle("确认订单");
         navigationBar.setCenterItemIconHidden();
     }
 

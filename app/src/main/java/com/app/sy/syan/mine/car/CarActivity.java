@@ -1,10 +1,10 @@
 package com.app.sy.syan.mine.car;
 
-import android.content.Context;
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -14,12 +14,9 @@ import android.widget.Toast;
 import com.app.sy.syan.R;
 import com.app.sy.syan.SyanApplication;
 import com.app.sy.syan.base.BaseActivity;
-import com.app.sy.syan.data.event.ModifyAddressEvent;
-import com.app.sy.syan.mine.address.ModifyAddressPresenter;
+import com.app.sy.syan.util.RecyclerAdapterWithHF;
 import com.app.sy.syan.view.NavigationBar;
 import com.jakewharton.rxbinding.view.RxView;
-
-import org.greenrobot.eventbus.EventBus;
 
 import java.util.concurrent.TimeUnit;
 
@@ -51,13 +48,35 @@ public class CarActivity extends BaseActivity implements CarContract.View, Navig
     RelativeLayout pubNaviRightItem;
     @BindView(R.id.ll_navi_root)
     LinearLayout llNaviRoot;
-    @BindView(R.id.et_address)
-    EditText etAddress;
-    @BindView(R.id.btn_note)
-    TextView btnNote;
+    @BindView(R.id.recycleview)
+    RecyclerView recycleview;
+    @BindView(R.id.view_bottom_line)
+    View viewBottomLine;
+    @BindView(R.id.shop_cart_select_all)
+    CheckBox shopCartSelectAll;
+    @BindView(R.id.shop_cart_all_count)
+    TextView shopCartAllCount;
+    @BindView(R.id.ll_shop_cart_account)
+    LinearLayout llShopCartAccount;
+    @BindView(R.id.tv_shop_cart_price)
+    TextView tvShopCartPrice;
+    @BindView(R.id.ll_cart_price)
+    LinearLayout llCartPrice;
+    @BindView(R.id.rel_cart_bottom)
+    RelativeLayout relCartBottom;
+    @BindView(R.id.iv_cart_no_data)
+    ImageView ivCartNoData;
+    @BindView(R.id.cart_no_data)
+    RelativeLayout cartNoData;
 
     @Inject
     CarPresenter mPresenter;
+    @Inject
+    LinearLayoutManager linearLayoutManager;
+    @Inject
+    RecyclerAdapterWithHF recyclerAdapterWithHF;
+    @Inject
+    CarGoodsAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,16 +91,18 @@ public class CarActivity extends BaseActivity implements CarContract.View, Navig
                 .build()
                 .inject(this);
 
-        RxView.clicks(btnNote)
+        recycleview.setLayoutManager(linearLayoutManager);
+        recycleview.setAdapter(recyclerAdapterWithHF);
+
+        RxView.clicks(llShopCartAccount)
                 .throttleFirst(1, TimeUnit.SECONDS)
                 .subscribe(new Action1<Void>() {
                     @Override
                     public void call(Void aVoid) {
-
+                        //结算
                     }
                 });
     }
-
 
 
     private void initView() {

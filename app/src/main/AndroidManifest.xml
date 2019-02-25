@@ -68,6 +68,15 @@
         <activity
             android:name=".mine.address.ModifyAddressActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".mine.car.CarActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mine.order.confirm.ConfirmActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mine.order.OrderActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

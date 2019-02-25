@@ -1,65 +1,161 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    android:orientation="vertical"
-    tools:context=".mine.address.ModifyAddressActivity">
-
-    <include
-        layout="@layout/public_navigation_bar_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+    android:background="@color/white">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/default_20dp_hf"
-        android:layout_marginRight="@dimen/default_20dp_hf"
-        android:layout_marginTop="@dimen/default_50dp_hf"
-        android:background="@drawable/bg_modify_address"
-        android:gravity="center_vertical"
-        android:padding="@dimen/default_15dp_hf">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <!--<TextView-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="收货地址："-->
-        <!--android:textColor="@color/black64"-->
-        <!--android:textSize="@dimen/default_16sp_hf" />-->
-
-        <EditText
-            android:id="@+id/et_address"
+        <include
+            layout="@layout/public_navigation_bar_layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@null"
-            android:hint="请输入收货地址"
-            android:textColor="@color/black64"
-            android:textColorHint="@color/grayc8"
-            android:textSize="@dimen/default_16sp_hf"
-            android:theme="@style/myEditText" />
-    </LinearLayout>
+            android:layout_height="wrap_content" />
 
-    <LinearLayout
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycleview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:divider="@color/gray_e6"
+            android:dividerHeight="@dimen/default_0.5dp_hf"
+            android:footerDividersEnabled="false"
+            android:paddingBottom="@dimen/default_50dp_hf" />
+
+    </LinearLayout>
+    <!--底部信息区域-->
+    <RelativeLayout
+        android:id="@+id/rel_cart_bottom"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/default_40dp_hf"
-        android:gravity="center_horizontal">
+        android:layout_height="@dimen/default_49dp_hf"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white">
+
+        <View
+            android:id="@+id/view_bottom_line"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/default_0.5dp_hf"
+            android:background="@color/gray_e6" />
+
+        <!--完成状态下的全选-->
+        <CheckBox
+            android:id="@+id/shop_cart_select_all"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/default_10dp_hf"
+            android:background="@null"
+            android:button="@drawable/shop_cart_checkbox_select"
+            android:checked="false"
+            android:text="  全选"
+            android:textColor="@color/black64"
+            android:textSize="@dimen/default_14sp_hf"
+            android:visibility="visible" />
+
+        <!--完成状态下的去结算-->
+        <LinearLayout
+            android:id="@+id/ll_shop_cart_account"
+            android:layout_width="@dimen/default_104dp_hf"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/view_bottom_line"
+            android:background="@color/color_FF0000"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="结算("
+                android:textColor="@color/white"
+                android:textSize="@dimen/default_16sp_hf" />
+
+            <TextView
+                android:id="@+id/shop_cart_all_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:text="0"
+                android:textColor="@color/white"
+                android:textSize="@dimen/default_16sp_hf" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=")"
+                android:textColor="@color/white"
+                android:textSize="@dimen/default_16sp_hf" />
+        </LinearLayout>
+
+        <!--完成状态下的合计部分-->
+        <LinearLayout
+            android:id="@+id/ll_cart_price"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/default_20dp_hf"
+            android:layout_marginRight="@dimen/default_11dp_hf"
+            android:layout_toLeftOf="@id/ll_shop_cart_account"
+            android:layout_toRightOf="@id/shop_cart_select_all"
+            android:gravity="center_vertical|right"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="合计"
+                android:textColor="@color/black32"
+                android:textSize="@dimen/default_14sp_hf" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/default_10dp_hf"
+                android:text="¥ "
+                android:textColor="@color/color_EE2C2C"
+                android:textSize="@dimen/default_18sp_hf" />
+
+            <TextView
+                android:id="@+id/tv_shop_cart_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/default_2dp_hf"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:text="0"
+                android:textColor="@color/color_EE2C2C"
+                android:textSize="@dimen/default_18sp_hf" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <!--无数据布局-->
+    <RelativeLayout
+        android:id="@+id/cart_no_data"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/gray"
+        android:clickable="true"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/iv_cart_no_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/default_160dp_hf"
+            android:src="@drawable/pic_gouwuche_kong" />
 
         <TextView
-            android:id="@+id/btn_note"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/default_30dp_hf"
-            android:layout_marginRight="@dimen/default_30dp_hf"
-            android:background="@drawable/loadagain_selector"
-            android:gravity="center"
-            android:paddingBottom="@dimen/default_10dp_hf"
-            android:paddingTop="@dimen/font_size_level_10"
-            android:text="确认修改"
-            android:textColor="@color/black64"
-            android:textSize="@dimen/default_20sp_hf" />
-    </LinearLayout>
-</LinearLayout>
+            android:layout_below="@id/iv_cart_no_data"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/default_25dp_hf"
+            android:text="购物车空空如也"
+            android:textColor="@color/gray96"
+            android:textSize="@dimen/default_15sp_hf" />
+    </RelativeLayout>
+
+</RelativeLayout>
