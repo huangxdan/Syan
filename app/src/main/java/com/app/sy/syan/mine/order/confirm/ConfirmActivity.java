@@ -3,6 +3,7 @@ package com.app.sy.syan.mine.order.confirm;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -54,8 +55,20 @@ public class ConfirmActivity extends BaseActivity implements ConfirmContract.Vie
     TextView tvReceiverAddress;
     @BindView(R.id.recycleview)
     RecyclerView recycleview;
-    @BindView(R.id.ll_pay)
-    LinearLayout llPay;
+    @BindView(R.id.ll_to_pay)
+    LinearLayout llToPay;
+    @BindView(R.id.ll_pay_layout)
+    LinearLayout llPayLayout;
+    @BindView(R.id.ll_back_pay)
+    LinearLayout llBackPay;
+    @BindView(R.id.tv_pay_ali)
+    TextView tvPayAli;
+    @BindView(R.id.iv_pay_ali)
+    ImageView ivPayAli;
+    @BindView(R.id.tv_pay_wx)
+    TextView tvPayWx;
+    @BindView(R.id.v_pay_wx)
+    ImageView vPayWx;
 
     @Inject
     ConfirmPresenter mPresenter;
@@ -67,12 +80,12 @@ public class ConfirmActivity extends BaseActivity implements ConfirmContract.Vie
     ConfirmGoodsAdapter mAdapter;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirm);
         ButterKnife.bind(this);
-        initView();
 
         DaggerConfirmComponent.builder()
                 .applicationComponent(SyanApplication.get(this).getAppComponent())
@@ -80,19 +93,11 @@ public class ConfirmActivity extends BaseActivity implements ConfirmContract.Vie
                 .build()
                 .inject(this);
 
-        recycleview.setLayoutManager(linearLayoutManager);
-        recycleview.setAdapter(recyclerAdapterWithHF);
+        initView();
+        initData();
+        bindListener();
 
-        RxView.clicks(llPay)
-                .throttleFirst(1, TimeUnit.SECONDS)
-                .subscribe(new Action1<Void>() {
-                    @Override
-                    public void call(Void aVoid) {
-
-                    }
-                });
     }
-
 
     private void initView() {
         NavigationBar navigationBar = new NavigationBar(this, this);
@@ -101,6 +106,32 @@ public class ConfirmActivity extends BaseActivity implements ConfirmContract.Vie
         navigationBar.setRightItemHidden();
         navigationBar.setCenterTitle("确认订单");
         navigationBar.setCenterItemIconHidden();
+    }
+
+    private void initData() {
+        recycleview.setLayoutManager(linearLayoutManager);
+        recycleview.setAdapter(recyclerAdapterWithHF);
+    }
+
+    private void bindListener() {
+
+        RxView.clicks(llToPay)
+                .throttleFirst(1, TimeUnit.SECONDS)
+                .subscribe(new Action1<Void>() {
+                    @Override
+                    public void call(Void aVoid) {
+                        llPayLayout.setVisibility(View.VISIBLE);
+                    }
+                });
+
+        RxView.clicks(llBackPay)
+                .throttleFirst(1, TimeUnit.SECONDS)
+                .subscribe(new Action1<Void>() {
+                    @Override
+                    public void call(Void aVoid) {
+                        llPayLayout.setVisibility(View.GONE);
+                    }
+                });
     }
 
     @Override

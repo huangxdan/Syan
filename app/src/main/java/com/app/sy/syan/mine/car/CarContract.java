@@ -6,6 +6,7 @@ public interface CarContract {
 
     interface View extends BaseView {
         void bindData();
+        void showNoNet();
     }
 
     interface Presenter {

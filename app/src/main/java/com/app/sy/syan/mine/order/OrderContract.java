@@ -6,6 +6,8 @@ public interface OrderContract {
 
     interface View extends BaseView {
         void bindData();
+
+        void showNoNet();
     }
 
     interface Presenter {

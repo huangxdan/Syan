@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -68,6 +69,10 @@ public class CarActivity extends BaseActivity implements CarContract.View, Navig
     ImageView ivCartNoData;
     @BindView(R.id.cart_no_data)
     RelativeLayout cartNoData;
+    @BindView(R.id.ll_no_net)
+    LinearLayout ll404;
+    @BindView(R.id.btn_reload)
+    Button btnReload;
 
     @Inject
     CarPresenter mPresenter;
@@ -102,6 +107,21 @@ public class CarActivity extends BaseActivity implements CarContract.View, Navig
                         //结算
                     }
                 });
+
+
+        RxView.clicks(btnReload).throttleFirst(1, TimeUnit.SECONDS)
+                .subscribe(new Action1<Void>() {
+                    @Override
+                    public void call(Void aVoid) {
+                        if (mPresenter != null) {
+                            ll404.setVisibility(View.GONE);
+                            showLoading();
+                            //获取购物车列表
+                            mPresenter.getData("");
+                        }
+                    }
+                });
+
     }
 
 
@@ -116,7 +136,7 @@ public class CarActivity extends BaseActivity implements CarContract.View, Navig
 
     @Override
     public void bindData() {
-
+        ll404.setVisibility(View.GONE);
     }
 
     @Override
@@ -132,6 +152,11 @@ public class CarActivity extends BaseActivity implements CarContract.View, Navig
     @Override
     public void showToast(String msg) {
         Toast.makeText(CarActivity.this, msg, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void showNoNet() {
+        ll404.setVisibility(View.VISIBLE);
     }
 
     @Override

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white" >
+
+    <ImageView
+        android:id="@+id/iv_goods"
+        android:layout_width="@dimen/default_90dp_hf"
+        android:layout_height="@dimen/default_90dp_hf"
+        android:background="@color/loading_bg_color"
+        android:scaleType="centerCrop"
+        android:src="@drawable/pic_default" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/default_90dp_hf"
+        android:layout_marginLeft="@dimen/default_8dp_hf"
+        android:layout_toRightOf="@+id/iv_goods">
+
+        <TextView
+            android:id="@+id/tv_goods_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="名字"
+            android:textColor="@color/black"
+            android:textSize="@dimen/default_16sp_hf" />
+
+        <!--单价 数量-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true">
+
+            <TextView
+                android:id="@+id/tv_one_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="¥"
+                android:textColor="@color/ff9800"
+                android:textSize="@dimen/default_15sp_hf" />
+
+            <TextView
+                android:id="@+id/tv_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="x 5"
+                android:textColor="@color/black"
+                android:textSize="@dimen/default_15sp_hf" />
+
+        </RelativeLayout>
+
+        <!--<RelativeLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_alignParentBottom="true">-->
+
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="小计"-->
+                <!--android:textColor="@color/black"-->
+                <!--android:textSize="@dimen/default_14sp_hf" />-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/tv_all_price"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_alignParentRight="true"-->
+                <!--android:text="¥"-->
+                <!--android:textColor="@color/ff9800"-->
+                <!--android:textSize="@dimen/default_14sp_hf" />-->
+
+        <!--</RelativeLayout>-->
+
+    </RelativeLayout>
+
+</RelativeLayout>

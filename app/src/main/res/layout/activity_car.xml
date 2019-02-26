@@ -4,27 +4,23 @@
     android:layout_height="match_parent"
     android:background="@color/white">
 
-    <LinearLayout
+    <include
+        android:id="@+id/rl_navi_layout"
+        layout="@layout/public_navigation_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycleview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_below="@+id/rl_navi_layout"
+        android:clipToPadding="false"
+        android:divider="@color/gray_e6"
+        android:dividerHeight="@dimen/default_0.5dp_hf"
+        android:footerDividersEnabled="false"
+        android:paddingBottom="@dimen/default_50dp_hf" />
 
-        <include
-            layout="@layout/public_navigation_bar_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recycleview"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:clipToPadding="false"
-            android:divider="@color/gray_e6"
-            android:dividerHeight="@dimen/default_0.5dp_hf"
-            android:footerDividersEnabled="false"
-            android:paddingBottom="@dimen/default_50dp_hf" />
-
-    </LinearLayout>
     <!--底部信息区域-->
     <RelativeLayout
         android:id="@+id/rel_cart_bottom"
@@ -135,6 +131,7 @@
         android:id="@+id/cart_no_data"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@+id/rl_navi_layout"
         android:background="@color/gray"
         android:clickable="true"
         android:visibility="gone">
@@ -158,4 +155,10 @@
             android:textSize="@dimen/default_15sp_hf" />
     </RelativeLayout>
 
+    <!--无网络布局-->
+    <include
+        layout="@layout/layout_no_net"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/rl_navi_layout" />
 </RelativeLayout>

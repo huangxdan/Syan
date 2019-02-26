@@ -1,7 +1,10 @@
 package com.app.sy.syan.mine.order;
 
 import android.os.Bundle;
-import android.widget.EditText;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -11,8 +14,7 @@ import android.widget.Toast;
 import com.app.sy.syan.R;
 import com.app.sy.syan.SyanApplication;
 import com.app.sy.syan.base.BaseActivity;
-import com.app.sy.syan.mine.address.ModifyAddressPresenter;
-import com.app.sy.syan.mine.car.CarContract;
+import com.app.sy.syan.util.RecyclerAdapterWithHF;
 import com.app.sy.syan.view.NavigationBar;
 import com.jakewharton.rxbinding.view.RxView;
 
@@ -46,20 +48,27 @@ public class OrderActivity extends BaseActivity implements OrderContract.View, N
     RelativeLayout pubNaviRightItem;
     @BindView(R.id.ll_navi_root)
     LinearLayout llNaviRoot;
-    @BindView(R.id.et_address)
-    EditText etAddress;
-    @BindView(R.id.btn_note)
-    TextView btnNote;
+    @BindView(R.id.recycleview)
+    RecyclerView recycleview;
+    @BindView(R.id.ll_no_net)
+    LinearLayout ll404;
+    @BindView(R.id.btn_reload)
+    Button btnReload;
 
     @Inject
     OrderPresenter mPresenter;
+    @Inject
+    LinearLayoutManager linearLayoutManager;
+    @Inject
+    RecyclerAdapterWithHF recyclerAdapterWithHF;
+    @Inject
+    OrderAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order);
         ButterKnife.bind(this);
-        initView();
 
         DaggerOrderComponent.builder()
                 .applicationComponent(SyanApplication.get(this).getAppComponent())
@@ -67,16 +76,24 @@ public class OrderActivity extends BaseActivity implements OrderContract.View, N
                 .build()
                 .inject(this);
 
-        RxView.clicks(btnNote)
-                .throttleFirst(1, TimeUnit.SECONDS)
+        initView();
+
+        recycleview.setLayoutManager(linearLayoutManager);
+        recycleview.setAdapter(recyclerAdapterWithHF);
+
+        RxView.clicks(btnReload).throttleFirst(1, TimeUnit.SECONDS)
                 .subscribe(new Action1<Void>() {
                     @Override
                     public void call(Void aVoid) {
-
+                        if (mPresenter != null) {
+                            ll404.setVisibility(View.GONE);
+                            showLoading();
+                            //获取购物车列表
+                            mPresenter.getData("");
+                        }
                     }
                 });
     }
-
 
 
     private void initView() {
@@ -84,13 +101,18 @@ public class OrderActivity extends BaseActivity implements OrderContract.View, N
         navigationBar.setCenterItemIconShow();
         navigationBar.setLeftItemTitleHidden();
         navigationBar.setRightItemHidden();
-        navigationBar.setCenterTitle("购物车");
+        navigationBar.setCenterTitle("我的订单");
         navigationBar.setCenterItemIconHidden();
     }
 
     @Override
     public void bindData() {
+        ll404.setVisibility(View.GONE);
+    }
 
+    @Override
+    public void showNoNet() {
+        ll404.setVisibility(View.VISIBLE);
     }
 
     @Override
