@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".mine.order.confirm.ConfirmActivity">
+
+    <include
+        android:id="@+id/rl_navi_layout"
+        layout="@layout/public_navigation_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <!--付款-->
+    <LinearLayout
+        android:id="@+id/ll_pay_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/rl_navi_layout"
+        android:background="@color/black8"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <!--支付宝支付-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_pay_ali"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="支付宝"
+                android:textColor="@color/white"
+                android:textSize="@dimen/default_17sp_hf" />
+
+            <ImageView
+                android:id="@+id/iv_pay_ali"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/pic_default" />
+        </LinearLayout>
+
+        <!--微信支付-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_pay_wx"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="微信"
+                android:textColor="@color/white"
+                android:textSize="@dimen/default_17sp_hf" />
+
+            <ImageView
+                android:id="@+id/v_pay_wx"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/pic_default" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>
