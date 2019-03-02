@@ -81,7 +81,8 @@ public class RemoteDataManager {
     public static class HostAddress {
 
 //        public static String BASE_ADDRESS = "http://zhaoheng0711.picp.io:39264/";
-        public static String BASE_ADDRESS = "http://39.105.28.53:8775/";
+//        public static String BASE_ADDRESS = "http://39.105.28.53:8775/";
+        public static String BASE_ADDRESS = "http://47.93.7.28:8775/";
 
 
 

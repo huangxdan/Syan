@@ -15,9 +15,14 @@ public class GoodsInfo {
     private String yongfa;
 
     //           		--商品价格
-    private String productPrice;
+    private double productPrice;
     //          		--库存数量
     private String productNumber;
+
+
+    //购物车列表字段，单个商品加入购物车的数量
+    private int goodscount;
+    private boolean isSelect;
 
     public String getProductId() {
         return productId;
@@ -59,11 +64,11 @@ public class GoodsInfo {
         this.productInfo = productInfo;
     }
 
-    public String getProductPrice() {
+    public double getProductPrice() {
         return productPrice;
     }
 
-    public void setProductPrice(String productPrice) {
+    public void setProductPrice(double productPrice) {
         this.productPrice = productPrice;
     }
 
@@ -97,5 +102,21 @@ public class GoodsInfo {
 
     public void setYongfa(String yongfa) {
         this.yongfa = yongfa;
+    }
+
+    public int getGoodscount() {
+        return goodscount;
+    }
+
+    public void setGoodscount(int goodscount) {
+        this.goodscount = goodscount;
+    }
+
+    public boolean isSelect() {
+        return isSelect;
+    }
+
+    public void setSelect(boolean select) {
+        isSelect = select;
     }
 }

@@ -18,8 +18,10 @@ import android.widget.TextView;
 import com.app.sy.syan.R;
 import com.app.sy.syan.SyanApplication;
 import com.app.sy.syan.base.BaseActivity;
+import com.app.sy.syan.data.CartGoodsCount;
 import com.app.sy.syan.data.GoodsInfo;
 import com.app.sy.syan.mine.order.confirm.ConfirmActivity;
+import com.app.sy.syan.util.NumberUtil;
 import com.app.sy.syan.view.BezierView;
 import com.app.sy.syan.view.NavigationBar;
 import com.bumptech.glide.Glide;
@@ -98,6 +100,7 @@ public class GoodsDetailActivity extends BaseActivity implements GoodsDetailCont
 
     private Context mContext;
     private String productId;
+    private int cartCount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -119,6 +122,7 @@ public class GoodsDetailActivity extends BaseActivity implements GoodsDetailCont
 
         if (goodsDetailPresenter != null) {
             goodsDetailPresenter.getData(productId);
+            goodsDetailPresenter.getCartCount(productId);
         }
 
     }
@@ -139,7 +143,10 @@ public class GoodsDetailActivity extends BaseActivity implements GoodsDetailCont
                 .subscribe(new Action1<Void>() {
                     @Override
                     public void call(Void aVoid) {
-                        showAddCartSuccessAnim(5);
+                        showAddCartSuccessAnim(++cartCount);
+                        if (goodsDetailPresenter != null) {
+                            goodsDetailPresenter.updateCartNum(productId);
+                        }
                     }
                 });
 
@@ -155,6 +162,11 @@ public class GoodsDetailActivity extends BaseActivity implements GoodsDetailCont
     }
 
     @Override
+    public void bindCartCount(CartGoodsCount cartGoodsCount) {
+        cartCount = cartGoodsCount.getCartTotal();
+        setCartNumb(cartGoodsCount.getCartTotal());
+    }
+
     public void bindData(GoodsInfo goodsInfo) {
         if (!TextUtils.isEmpty(goodsInfo.getProductImg())) {
             Glide.with(mContext).load(goodsInfo.getProductImg()).centerCrop().into(ivGoods);
@@ -163,7 +175,7 @@ public class GoodsDetailActivity extends BaseActivity implements GoodsDetailCont
             ivGoods.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
         }
         tvGoodsName.setText(goodsInfo.getProductName());
-        tvGoodsPrice.setText(goodsInfo.getProductPrice());
+        tvGoodsPrice.setText(NumberUtil.getDoubleString(goodsInfo.getProductPrice()));
 //        tvGoodsInfo.setText(goodsInfo.getProductInfo());
         if (!TextUtils.isEmpty(goodsInfo.getChengfen())) {
             rlChengfen.setVisibility(View.VISIBLE);

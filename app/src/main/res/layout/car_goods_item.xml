@@ -13,6 +13,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
+        android:paddingTop="@dimen/default_13dp_hf"
+        android:paddingBottom="@dimen/default_13dp_hf"
+        android:paddingRight="@dimen/default_8dp_hf"
         android:background="@null"
         android:button="@drawable/shop_cart_checkbox_select"
         android:checked="false" />
@@ -21,7 +24,6 @@
         android:id="@+id/iv_goods"
         android:layout_width="@dimen/default_90dp_hf"
         android:layout_height="@dimen/default_90dp_hf"
-        android:layout_marginLeft="@dimen/default_8dp_hf"
         android:layout_toRightOf="@+id/checkbox"
         android:background="@color/loading_bg_color"
         android:scaleType="centerCrop"

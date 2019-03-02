@@ -3,10 +3,15 @@ package com.app.sy.syan.goods.detail;
 import android.content.Context;
 
 import com.app.sy.syan.R;
+import com.app.sy.syan.data.bean.CartGoodsCountBean;
 import com.app.sy.syan.data.bean.GoodsInfoBean;
 import com.app.sy.syan.data.dto.RPCMessage;
 import com.app.sy.syan.data.remote.SyanServiceApi;
+import com.app.sy.syan.data.request.CharacterBody;
 import com.app.sy.syan.data.request.ProductDetailBody;
+import com.app.sy.syan.data.request.UpdateCartNumBody;
+import com.app.sy.syan.util.Constant;
+import com.app.sy.syan.util.PreferenceUtils;
 import com.google.gson.Gson;
 
 import java.io.IOException;
@@ -82,6 +87,101 @@ public class GoodsDetailPresenter implements GoodsDetailContract.Presenter {
                         if (goodsInfoBean != null) {
                             mView.bindData(goodsInfoBean.getData());
                         }
+                    }
+                });
+    }
+
+
+    @Override
+    public void getCartCount(String productId) {
+        CharacterBody characterBody = new CharacterBody(PreferenceUtils.getPrefString(context, Constant.STAFF_NUMBER, ""));
+        mSyanServiceApi.productDetailCartCount(characterBody)
+                .map(new Func1<ResponseBody, String>() {
+                    @Override
+                    public String call(ResponseBody responseBody) {
+                        String jsonStr = "";
+                        try {
+                            jsonStr = responseBody.string();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        RPCMessage message = new Gson().fromJson(jsonStr, RPCMessage.class);
+                        if (message == null) {
+                            throw new NullPointerException("获取数据失败");
+                        }
+
+                        return jsonStr;
+                    }
+                })
+                .map(new Func1<String, CartGoodsCountBean>() {
+                    @Override
+                    public CartGoodsCountBean call(String jsonStr) {
+                        return new Gson().fromJson(jsonStr, CartGoodsCountBean.class);
+                    }
+                })
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<CartGoodsCountBean>() {
+                    @Override
+                    public void onCompleted() {
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+//                        mView.showToast(e.getMessage());
+                    }
+
+                    @Override
+                    public void onNext(CartGoodsCountBean countBean) {
+                        if (countBean != null) {
+                            mView.bindCartCount(countBean.getData());
+                        }
+                    }
+                });
+    }
+
+    @Override
+    public void updateCartNum(String productId) {
+        UpdateCartNumBody body = new UpdateCartNumBody(PreferenceUtils.getPrefString(context, Constant.STAFF_NUMBER, ""), productId, 1 + "");
+        mSyanServiceApi.updateCartNum(body)
+                .map(new Func1<ResponseBody, String>() {
+                    @Override
+                    public String call(ResponseBody responseBody) {
+                        String jsonStr = "";
+                        try {
+                            jsonStr = responseBody.string();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        RPCMessage message = new Gson().fromJson(jsonStr, RPCMessage.class);
+                        if (message == null) {
+                            throw new NullPointerException("获取数据失败");
+                        }
+
+                        return jsonStr;
+                    }
+                })
+                .map(new Func1<String, RPCMessage>() {
+                    @Override
+                    public RPCMessage call(String jsonStr) {
+                        return new Gson().fromJson(jsonStr, RPCMessage.class);
+                    }
+                })
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<RPCMessage>() {
+                    @Override
+                    public void onCompleted() {
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+//                        mView.showToast(e.getMessage());
+                    }
+
+                    @Override
+                    public void onNext(RPCMessage countBean) {
+
                     }
                 });
     }

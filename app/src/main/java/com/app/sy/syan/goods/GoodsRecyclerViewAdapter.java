@@ -13,6 +13,7 @@ import com.app.sy.syan.R;
 import com.app.sy.syan.data.GoodsInfo;
 import com.app.sy.syan.data.remote.RemoteDataManager;
 import com.app.sy.syan.goods.detail.GoodsDetailActivity;
+import com.app.sy.syan.util.NumberUtil;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
@@ -51,7 +52,7 @@ public class GoodsRecyclerViewAdapter extends RecyclerView.Adapter {
             holder.ivGoods.setImageResource(R.drawable.pic_default);
         }
         holder.tv_goods_name.setText(goodsInfo.getProductName());
-        holder.tv_goods_price.setText("￥" + goodsInfo.getProductPrice());
+        holder.tv_goods_price.setText("￥" + NumberUtil.getDoubleString(goodsInfo.getProductPrice()));
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
