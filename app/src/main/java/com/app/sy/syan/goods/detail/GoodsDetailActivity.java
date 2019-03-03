@@ -1,6 +1,7 @@
 package com.app.sy.syan.goods.detail;
 
 import android.animation.ObjectAnimator;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Point;
@@ -22,6 +23,7 @@ import com.app.sy.syan.data.CartGoodsCount;
 import com.app.sy.syan.data.GoodsInfo;
 import com.app.sy.syan.mine.car.CarActivity;
 import com.app.sy.syan.mine.order.confirm.ConfirmActivity;
+import com.app.sy.syan.util.ActivityManager;
 import com.app.sy.syan.util.NumberUtil;
 import com.app.sy.syan.view.BezierView;
 import com.app.sy.syan.view.NavigationBar;
@@ -160,14 +162,18 @@ public class GoodsDetailActivity extends BaseActivity implements GoodsDetailCont
                 .subscribe(new Action1<Void>() {
                     @Override
                     public void call(Void aVoid) {
-                        ArrayList<GoodsInfo> arrayList = new ArrayList<>();
-                        mGoodsInfo.setGoodscount(1);
-                        arrayList.add(mGoodsInfo);
+                        if (mGoodsInfo != null) {
+                            ArrayList<GoodsInfo> arrayList = new ArrayList<>();
+                            mGoodsInfo.setGoodscount(1);
+                            arrayList.add(mGoodsInfo);
 
-                        Intent intent = new Intent(GoodsDetailActivity.this, ConfirmActivity.class);
-                        intent.putExtra("list", (Serializable) arrayList);
-                        intent.putExtra("totalPrice", NumberUtil.getDoubleString(mGoodsInfo.getProductPrice()));
-                        startActivity(intent);
+                            Intent intent = new Intent(GoodsDetailActivity.this, ConfirmActivity.class);
+                            intent.putExtra("list", (Serializable) arrayList);
+                            intent.putExtra("totalPrice", NumberUtil.getDoubleString(mGoodsInfo.getProductPrice()));
+                            startActivity(intent);
+                        } else {
+                            showToast("购买失败，请联系管理员");
+                        }
                     }
                 });
 
@@ -177,6 +183,12 @@ public class GoodsDetailActivity extends BaseActivity implements GoodsDetailCont
                 .subscribe(new Action1<Void>() {
                     @Override
                     public void call(Void aVoid) {
+                        for (Activity activity : ActivityManager.instance().getActivities()) {
+                            if (activity instanceof CarActivity) {
+                                activity.finish();
+                                break;
+                            }
+                        }
                         startActivity(new Intent(GoodsDetailActivity.this, CarActivity.class));
                     }
                 });

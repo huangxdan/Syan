@@ -69,7 +69,7 @@ public class OrderAdapter extends RecyclerView.Adapter {
             totalMoney += (myOrderList.getProductList().get(i).getProductPrice() * myOrderList.getProductList().get(i).getGoodsNum());
         }
 
-        holder.tv_all_price.setText("¥ " + NumberUtil.getDoubleString(totalMoney));
+        holder.tv_all_price.setText("¥" + NumberUtil.getDoubleString(totalMoney));
         holder.tv_total_count.setText(totalCount + "");
 
         if (position == mList.size() - 1) {

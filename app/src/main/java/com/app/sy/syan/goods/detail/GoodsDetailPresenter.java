@@ -84,7 +84,7 @@ public class GoodsDetailPresenter implements GoodsDetailContract.Presenter {
 
                     @Override
                     public void onNext(GoodsInfoBean goodsInfoBean) {
-                        if (goodsInfoBean != null) {
+                        if (goodsInfoBean != null && goodsInfoBean.getData() != null) {
                             mView.bindData(goodsInfoBean.getData());
                         }
                     }

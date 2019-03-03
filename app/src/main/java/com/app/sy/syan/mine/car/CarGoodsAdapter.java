@@ -1,5 +1,6 @@
 package com.app.sy.syan.mine.car;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 import com.app.sy.syan.R;
 import com.app.sy.syan.data.GoodsInfo;
 import com.app.sy.syan.goods.detail.GoodsDetailActivity;
+import com.app.sy.syan.util.ActivityManager;
 import com.app.sy.syan.util.DataTransfer;
 import com.app.sy.syan.util.NumberUtil;
 import com.bumptech.glide.Glide;
@@ -81,6 +83,13 @@ public class CarGoodsAdapter extends RecyclerView.Adapter {
             @Override
             public void onClick(View v) {
                 if (context != null) {
+                    for (Activity activity : ActivityManager.instance().getActivities()) {
+                        if (activity instanceof GoodsDetailActivity) {
+                            activity.finish();
+                            break;
+                        }
+                    }
+
                     Intent intent = new Intent(context, GoodsDetailActivity.class);
                     intent.putExtra(GoodsDetailActivity.PRODUCT_ID, goodsInfo.getProductId());
                     context.startActivity(intent);

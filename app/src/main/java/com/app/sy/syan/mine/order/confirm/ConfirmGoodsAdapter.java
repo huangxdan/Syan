@@ -61,16 +61,6 @@ public class ConfirmGoodsAdapter extends RecyclerView.Adapter {
             holder.divider_view.setVisibility(View.VISIBLE);
         }
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (context != null) {
-                    Intent intent = new Intent(context, GoodsDetailActivity.class);
-                    intent.putExtra(GoodsDetailActivity.PRODUCT_ID, goodsInfo.getProductId());
-                    context.startActivity(intent);
-                }
-            }
-        });
     }
 
     @Override
