@@ -52,6 +52,14 @@ public class ConfirmGoodsAdapter extends RecyclerView.Adapter {
         }
         holder.tv_goods_name.setText(goodsInfo.getProductName());
         holder.tv_one_price.setText("￥" + NumberUtil.getDoubleString(goodsInfo.getProductPrice()));
+        holder.tv_count.setText("x " + goodsInfo.getGoodscount());
+        holder.tv_all_price.setText("￥" + NumberUtil.getDoubleString(goodsInfo.getProductPrice() * goodsInfo.getGoodscount()));
+
+        if (position == mList.size() - 1) {
+            holder.divider_view.setVisibility(View.GONE);
+        } else {
+            holder.divider_view.setVisibility(View.VISIBLE);
+        }
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,6 +81,7 @@ public class ConfirmGoodsAdapter extends RecyclerView.Adapter {
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final ImageView ivGoods;
         public TextView tv_goods_name, tv_one_price, tv_count, tv_all_price;
+        public View divider_view;
 
         public ViewHolder(View view) {
             super(view);
@@ -81,6 +90,7 @@ public class ConfirmGoodsAdapter extends RecyclerView.Adapter {
             tv_one_price = (TextView) view.findViewById(R.id.tv_one_price);
             tv_count = (TextView) view.findViewById(R.id.tv_count);
             tv_all_price = (TextView) view.findViewById(R.id.tv_all_price);
+            divider_view = (View) view.findViewById(R.id.divider_view);
         }
 
     }

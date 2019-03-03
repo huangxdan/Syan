@@ -1,6 +1,8 @@
 package com.app.sy.syan.data;
 
-public class GoodsInfo {
+import java.io.Serializable;
+
+public class GoodsInfo implements Serializable{
     //                 --商品id
     private String productId;
     //            		--商品名称

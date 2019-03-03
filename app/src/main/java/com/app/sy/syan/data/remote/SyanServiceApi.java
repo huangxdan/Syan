@@ -6,6 +6,7 @@ import com.app.sy.syan.data.request.ModifyAddressBody;
 import com.app.sy.syan.data.request.ModifyPwdBody;
 import com.app.sy.syan.data.request.NoteBody;
 import com.app.sy.syan.data.request.ProductDetailBody;
+import com.app.sy.syan.data.request.SubmitOrderBody;
 import com.app.sy.syan.data.request.UpdateCartNumBody;
 
 import okhttp3.ResponseBody;
@@ -61,6 +62,14 @@ public interface SyanServiceApi {
     //获取购物车所有商品
     @POST("app/getCartlist")
     Observable<ResponseBody> getCartList(@Body CharacterBody characterBody);
+
+    //获取我的订单
+    @POST("app/getOrderlist")
+    Observable<ResponseBody> getOrderList(@Body CharacterBody characterBody);
+
+    //提交订单
+    @POST("app/addMyOrder")
+    Observable<ResponseBody> addMyOrder(@Body SubmitOrderBody submitOrderBody);
 
     //公益
     @POST("app/getLoveFee")

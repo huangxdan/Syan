@@ -1,6 +1,8 @@
 package com.app.sy.syan.mine.order;
 
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.ViewGroup;
 
 import com.app.sy.syan.scope.ActivityScoped;
 import com.app.sy.syan.util.RecyclerAdapterWithHF;
@@ -25,7 +27,13 @@ public class OrderModule {
     @Provides
     @ActivityScoped
     LinearLayoutManager provideLinearLayoutManager() {
-        return new LinearLayoutManager(orderActivity);
+        return new LinearLayoutManager(orderActivity) {
+            @Override
+            public RecyclerView.LayoutParams generateDefaultLayoutParams() {
+                return new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                        ViewGroup.LayoutParams.WRAP_CONTENT);
+            }
+        };
     }
 
     @Provides

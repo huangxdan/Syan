@@ -19,8 +19,6 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/rl_navi_layout"
         android:clipToPadding="false"
-        android:divider="@color/gray_e6"
-        android:dividerHeight="@dimen/default_0.5dp_hf"
         android:footerDividersEnabled="false"
         android:paddingBottom="@dimen/default_50dp_hf" />
 
@@ -29,7 +27,6 @@
         layout="@layout/layout_no_net"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/rl_navi_layout"
-        android:visibility="gone" />
+        android:layout_below="@+id/rl_navi_layout" />
 
 </RelativeLayout>

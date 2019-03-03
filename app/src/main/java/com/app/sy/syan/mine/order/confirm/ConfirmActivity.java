@@ -14,11 +14,13 @@ import android.widget.Toast;
 import com.app.sy.syan.R;
 import com.app.sy.syan.SyanApplication;
 import com.app.sy.syan.base.BaseActivity;
-import com.app.sy.syan.mine.order.pay.PayActivity;
+import com.app.sy.syan.data.GoodsInfo;
+import com.app.sy.syan.data.StaffInfo;
 import com.app.sy.syan.util.RecyclerAdapterWithHF;
 import com.app.sy.syan.view.NavigationBar;
 import com.jakewharton.rxbinding.view.RxView;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import javax.inject.Inject;
@@ -55,6 +57,8 @@ public class ConfirmActivity extends BaseActivity implements ConfirmContract.Vie
     TextView tvReceiverPhone;
     @BindView(R.id.tv_receiver_address)
     TextView tvReceiverAddress;
+    @BindView(R.id.tv_total_money)
+    TextView tvTotalMoney;
     @BindView(R.id.recycleview)
     RecyclerView recycleview;
     @BindView(R.id.ll_to_pay)
@@ -69,6 +73,8 @@ public class ConfirmActivity extends BaseActivity implements ConfirmContract.Vie
     @Inject
     ConfirmGoodsAdapter mAdapter;
 
+    private List<GoodsInfo> mGoodsList;
+    private String totalMoney;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,8 +104,15 @@ public class ConfirmActivity extends BaseActivity implements ConfirmContract.Vie
     }
 
     private void initData() {
+        mPresenter.getData();
+
         recycleview.setLayoutManager(linearLayoutManager);
         recycleview.setAdapter(recyclerAdapterWithHF);
+
+        mGoodsList = (List<GoodsInfo>) getIntent().getSerializableExtra("list");
+        mAdapter.setData(mGoodsList);
+        totalMoney = getIntent().getStringExtra("totalPrice");
+        tvTotalMoney.setText("¥ " + totalMoney);
     }
 
     private void bindListener() {
@@ -109,14 +122,23 @@ public class ConfirmActivity extends BaseActivity implements ConfirmContract.Vie
                 .subscribe(new Action1<Void>() {
                     @Override
                     public void call(Void aVoid) {
-                        startActivity(new Intent(ConfirmActivity.this, PayActivity.class));
+                        //提交订单
+                        mPresenter.addMyOrder(mGoodsList, totalMoney);
                     }
                 });
     }
 
     @Override
-    public void bindData() {
+    public void bindData(StaffInfo staffInfo) {
+        tvReceiver.setText(staffInfo.getStaffName());
+        tvReceiverPhone.setText(staffInfo.getPhonenumber());
+        tvReceiverAddress.setText(staffInfo.getAddress());
+    }
 
+    @Override
+    public void confirmSuccess() {
+        setResult(2);
+        finish();
     }
 
     @Override

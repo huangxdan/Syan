@@ -78,6 +78,7 @@ public class CarPresenter implements CarContract.Presenter {
                     @Override
                     public void onError(Throwable e) {
                         mView.showToast(e.getMessage());
+                        mView.showNoNet();
                     }
 
                     @Override

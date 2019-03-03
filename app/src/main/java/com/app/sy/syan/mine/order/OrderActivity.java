@@ -14,10 +14,12 @@ import android.widget.Toast;
 import com.app.sy.syan.R;
 import com.app.sy.syan.SyanApplication;
 import com.app.sy.syan.base.BaseActivity;
+import com.app.sy.syan.data.MyOrderList;
 import com.app.sy.syan.util.RecyclerAdapterWithHF;
 import com.app.sy.syan.view.NavigationBar;
 import com.jakewharton.rxbinding.view.RxView;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import javax.inject.Inject;
@@ -78,8 +80,11 @@ public class OrderActivity extends BaseActivity implements OrderContract.View, N
 
         initView();
 
+        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recycleview.setLayoutManager(linearLayoutManager);
         recycleview.setAdapter(recyclerAdapterWithHF);
+
+        mPresenter.getData();
 
         RxView.clicks(btnReload).throttleFirst(1, TimeUnit.SECONDS)
                 .subscribe(new Action1<Void>() {
@@ -89,7 +94,7 @@ public class OrderActivity extends BaseActivity implements OrderContract.View, N
                             ll404.setVisibility(View.GONE);
                             showLoading();
                             //获取购物车列表
-                            mPresenter.getData("");
+                            mPresenter.getData();
                         }
                     }
                 });
@@ -106,8 +111,10 @@ public class OrderActivity extends BaseActivity implements OrderContract.View, N
     }
 
     @Override
-    public void bindData() {
+    public void bindData(List<MyOrderList> lists) {
         ll404.setVisibility(View.GONE);
+
+        mAdapter.setData(lists);
     }
 
     @Override

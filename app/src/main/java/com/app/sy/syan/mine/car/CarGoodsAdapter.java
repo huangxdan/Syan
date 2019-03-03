@@ -32,8 +32,8 @@ public class CarGoodsAdapter extends RecyclerView.Adapter {
         mSelectGoods = new ArrayList<>();
     }
 
-    public void setData() {
-        notifyDataSetChanged();
+    public List<GoodsInfo> getSelectGoods() {
+        return mSelectGoods;
     }
 
     public void setPresenter(CarPresenter presenter) {
@@ -64,6 +64,12 @@ public class CarGoodsAdapter extends RecyclerView.Adapter {
         holder.tv_goods_name.setText(goodsInfo.getProductName());
         holder.tv_one_price.setText("￥" + NumberUtil.getDoubleString(goodsInfo.getProductPrice()));
         holder.tv_count.setText(goodsInfo.getGoodscount() + "");
+
+        if (position == DataTransfer.getInstance().cartGoods.size() - 1) {
+            holder.divider_view.setVisibility(View.GONE);
+        } else {
+            holder.divider_view.setVisibility(View.VISIBLE);
+        }
 
         //添加监听事件
         bindListener(holder, goodsInfo);
@@ -158,6 +164,7 @@ public class CarGoodsAdapter extends RecyclerView.Adapter {
         public final ImageView ivGoods, iv_dustbin;
         public TextView tv_goods_name, tv_one_price, tv_reduce, tv_count, tv_add;
         public CheckBox checkbox;
+        public View divider_view;
 
         public ViewHolder(View view) {
             super(view);
@@ -169,6 +176,7 @@ public class CarGoodsAdapter extends RecyclerView.Adapter {
             tv_count = (TextView) view.findViewById(R.id.tv_count);
             tv_add = (TextView) view.findViewById(R.id.tv_add);
             checkbox = (CheckBox) view.findViewById(R.id.checkbox);
+            divider_view = (View) view.findViewById(R.id.divider_view);
         }
 
     }

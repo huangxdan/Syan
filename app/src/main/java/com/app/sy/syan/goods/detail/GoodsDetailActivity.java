@@ -20,6 +20,7 @@ import com.app.sy.syan.SyanApplication;
 import com.app.sy.syan.base.BaseActivity;
 import com.app.sy.syan.data.CartGoodsCount;
 import com.app.sy.syan.data.GoodsInfo;
+import com.app.sy.syan.mine.car.CarActivity;
 import com.app.sy.syan.mine.order.confirm.ConfirmActivity;
 import com.app.sy.syan.util.NumberUtil;
 import com.app.sy.syan.view.BezierView;
@@ -27,6 +28,8 @@ import com.app.sy.syan.view.NavigationBar;
 import com.bumptech.glide.Glide;
 import com.jakewharton.rxbinding.view.RxView;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
 import javax.inject.Inject;
@@ -101,6 +104,7 @@ public class GoodsDetailActivity extends BaseActivity implements GoodsDetailCont
     private Context mContext;
     private String productId;
     private int cartCount;
+    private GoodsInfo mGoodsInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -156,7 +160,24 @@ public class GoodsDetailActivity extends BaseActivity implements GoodsDetailCont
                 .subscribe(new Action1<Void>() {
                     @Override
                     public void call(Void aVoid) {
-                        startActivity(new Intent(GoodsDetailActivity.this, ConfirmActivity.class));
+                        ArrayList<GoodsInfo> arrayList = new ArrayList<>();
+                        mGoodsInfo.setGoodscount(1);
+                        arrayList.add(mGoodsInfo);
+
+                        Intent intent = new Intent(GoodsDetailActivity.this, ConfirmActivity.class);
+                        intent.putExtra("list", (Serializable) arrayList);
+                        intent.putExtra("totalPrice", NumberUtil.getDoubleString(mGoodsInfo.getProductPrice()));
+                        startActivity(intent);
+                    }
+                });
+
+        //点击购物车
+        RxView.clicks(rlAddCar)
+                .throttleFirst(1, TimeUnit.SECONDS)
+                .subscribe(new Action1<Void>() {
+                    @Override
+                    public void call(Void aVoid) {
+                        startActivity(new Intent(GoodsDetailActivity.this, CarActivity.class));
                     }
                 });
     }
@@ -167,7 +188,9 @@ public class GoodsDetailActivity extends BaseActivity implements GoodsDetailCont
         setCartNumb(cartGoodsCount.getCartTotal());
     }
 
+    @Override
     public void bindData(GoodsInfo goodsInfo) {
+        mGoodsInfo = goodsInfo;
         if (!TextUtils.isEmpty(goodsInfo.getProductImg())) {
             Glide.with(mContext).load(goodsInfo.getProductImg()).centerCrop().into(ivGoods);
         } else {

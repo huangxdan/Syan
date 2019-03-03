@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/bg_order_item"
-    android:padding="@dimen/default_10dp_hf">
+    android:background="@color/white"
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/tv_state"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
+        android:layout_gravity="right"
+        android:layout_marginRight="@dimen/default_10dp_hf"
         android:text="交易成功"
         android:textColor="@color/color_FF0000"
         android:textSize="@dimen/default_15sp_hf" />
@@ -18,12 +19,61 @@
         android:id="@+id/recycleview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_state"
+        android:layout_marginLeft="@dimen/default_10dp_hf"
+        android:layout_marginRight="@dimen/default_10dp_hf"
         android:layout_marginTop="@dimen/default_2dp_hf"
         android:clipToPadding="false"
-        android:divider="@color/gray_e6"
-        android:dividerHeight="@dimen/default_0.5dp_hf"
-        android:footerDividersEnabled="false"
-        android:paddingBottom="@dimen/default_50dp_hf" />
+        android:footerDividersEnabled="false" />
 
-</RelativeLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginRight="@dimen/default_25dp_hf"
+        android:gravity="center_vertical"
+        android:paddingBottom="@dimen/default_5dp_hf"
+        android:paddingTop="@dimen/default_5dp_hf">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="共"
+            android:textColor="@color/black"
+            android:textSize="@dimen/default_13sp_hf" />
+
+        <TextView
+            android:id="@+id/tv_total_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/default_2dp_hf"
+            android:text="5"
+            android:textColor="@color/black"
+            android:textSize="@dimen/default_15sp_hf" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/default_2dp_hf"
+            android:text="件商品    合计"
+            android:textColor="@color/black"
+            android:textSize="@dimen/default_13sp_hf" />
+
+        <TextView
+            android:id="@+id/tv_all_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="@dimen/default_2dp_hf"
+            android:text="¥"
+            android:textColor="@color/ff9800"
+            android:textSize="@dimen/default_15sp_hf" />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/divider_view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/default_10dp_hf"
+        android:background="@color/gray"
+        android:visibility="gone" />
+</LinearLayout>

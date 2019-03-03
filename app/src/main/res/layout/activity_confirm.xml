@@ -30,7 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/default_22dp_hf"
-            android:text="收货人："
+            android:text="收货人"
             android:textColor="@color/black32"
             android:textSize="@dimen/default_19sp_hf" />
 
@@ -39,7 +39,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:text="15502162351"
+            android:text=""
             android:textColor="@color/black32"
             android:textSize="@dimen/default_19sp_hf" />
 
@@ -59,7 +59,7 @@
             android:layout_below="@+id/tv_receiver"
             android:layout_marginTop="@dimen/default_4dp_hf"
             android:layout_toRightOf="@+id/iv_icon"
-            android:text="收货地址："
+            android:text="收货地址"
             android:textColor="@color/black32"
             android:textSize="@dimen/default_15sp_hf" />
     </RelativeLayout>
@@ -111,6 +111,7 @@
                     android:textSize="@dimen/default_16sp_hf" />
 
                 <TextView
+                    android:id="@+id/tv_total_money"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"

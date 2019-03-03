@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.app.sy.syan.R;
-import com.app.sy.syan.data.GoodsInfo;
+import com.app.sy.syan.data.MyOrderInfo;
 import com.app.sy.syan.goods.detail.GoodsDetailActivity;
 import com.app.sy.syan.util.NumberUtil;
 import com.bumptech.glide.Glide;
@@ -20,14 +20,14 @@ import java.util.List;
 
 public class OrderItemAdapter extends RecyclerView.Adapter {
     private Context context;
-    private List<GoodsInfo> mList;
+    private List<MyOrderInfo> mList;
 
     public OrderItemAdapter(Context context) {
         this.context = context;
         mList = new ArrayList<>();
     }
 
-    public void setData(List<GoodsInfo> items) {
+    public void setData(List<MyOrderInfo> items) {
         this.mList.clear();
         this.mList.addAll(items);
         notifyDataSetChanged();
@@ -44,21 +44,23 @@ public class OrderItemAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int position) {
         final ViewHolder holder = (ViewHolder) viewHolder;
 
-        final GoodsInfo goodsInfo = mList.get(position);
-        if (!TextUtils.isEmpty(goodsInfo.getProductImg())) {
-            Glide.with(context).load(goodsInfo.getProductImg()).into(holder.ivGoods);
+        final MyOrderInfo myOrderInfo = mList.get(position);
+        if (!TextUtils.isEmpty(myOrderInfo.getProductImg())) {
+            Glide.with(context).load(myOrderInfo.getProductImg()).into(holder.ivGoods);
         } else {
             holder.ivGoods.setImageResource(R.drawable.pic_default);
         }
-        holder.tv_goods_name.setText(goodsInfo.getProductName());
-        holder.tv_one_price.setText("￥" + NumberUtil.getDoubleString(goodsInfo.getProductPrice()));
+        holder.tv_goods_name.setText(myOrderInfo.getProductName());
+        holder.tv_one_price.setText("￥" + NumberUtil.getDoubleString(myOrderInfo.getProductPrice()));
+        holder.tv_count.setText("x " + myOrderInfo.getGoodsNum());
+        holder.tv_all_price.setText("￥" + NumberUtil.getDoubleString(myOrderInfo.getProductPrice() * myOrderInfo.getGoodsNum()));
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (context != null) {
                     Intent intent = new Intent(context, GoodsDetailActivity.class);
-                    intent.putExtra(GoodsDetailActivity.PRODUCT_ID, goodsInfo.getProductId());
+                    intent.putExtra(GoodsDetailActivity.PRODUCT_ID, myOrderInfo.getProductid());
                     context.startActivity(intent);
                 }
             }
@@ -72,7 +74,8 @@ public class OrderItemAdapter extends RecyclerView.Adapter {
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final ImageView ivGoods;
-        public TextView tv_goods_name, tv_one_price, tv_count;
+        public TextView tv_goods_name, tv_one_price, tv_all_price, tv_count;
+        public View divider_view;
 
         public ViewHolder(View view) {
             super(view);
@@ -80,7 +83,8 @@ public class OrderItemAdapter extends RecyclerView.Adapter {
             tv_goods_name = (TextView) view.findViewById(R.id.tv_goods_name);
             tv_one_price = (TextView) view.findViewById(R.id.tv_one_price);
             tv_count = (TextView) view.findViewById(R.id.tv_count);
-//            tv_all_price = (TextView) view.findViewById(R.id.tv_all_price);
+            tv_all_price = (TextView) view.findViewById(R.id.tv_all_price);
+            divider_view = (View) view.findViewById(R.id.divider_view);
         }
 
     }

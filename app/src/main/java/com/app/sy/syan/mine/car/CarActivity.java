@@ -1,5 +1,6 @@
 package com.app.sy.syan.mine.car;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -19,12 +20,14 @@ import com.app.sy.syan.R;
 import com.app.sy.syan.SyanApplication;
 import com.app.sy.syan.base.BaseActivity;
 import com.app.sy.syan.data.GoodsInfo;
+import com.app.sy.syan.mine.order.confirm.ConfirmActivity;
 import com.app.sy.syan.util.DataTransfer;
 import com.app.sy.syan.util.NumberUtil;
 import com.app.sy.syan.util.RecyclerAdapterWithHF;
 import com.app.sy.syan.view.NavigationBar;
 import com.jakewharton.rxbinding.view.RxView;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -134,6 +137,14 @@ public class CarActivity extends BaseActivity implements CarContract.View, Navig
                     @Override
                     public void call(Void aVoid) {
                         //结算
+                        if (mAdapter.getSelectGoods().size() > 0) {
+                            Intent intent = new Intent(CarActivity.this, ConfirmActivity.class);
+                            intent.putExtra("list", (Serializable) mAdapter.getSelectGoods());
+                            intent.putExtra("totalPrice", tvShopCartPrice.getText().toString());
+                            startActivityForResult(intent, 1);
+                        } else {
+                            showToast("请选择要购买的商品");
+                        }
                     }
                 });
 
@@ -171,12 +182,20 @@ public class CarActivity extends BaseActivity implements CarContract.View, Navig
     }
 
     @Override
-    public void bindData(List<GoodsInfo> list) {
-        ll404.setVisibility(View.GONE);
-        recycleview.setVisibility(View.VISIBLE);
-        DataTransfer.getInstance().cartGoods.clear();
-        DataTransfer.getInstance().cartGoods.addAll(list);
-        mAdapter.setData();
+    public void bindData(List<GoodsInfo> list) { 
+        if (list.size() > 0) {
+            ll404.setVisibility(View.GONE);
+            cartNoData.setVisibility(View.GONE);
+            recycleview.setVisibility(View.VISIBLE);
+            DataTransfer.getInstance().cartGoods.clear();
+            DataTransfer.getInstance().cartGoods.addAll(list);
+            mAdapter.notifyDataSetChanged();
+        } else {
+            ll404.setVisibility(View.GONE);
+            cartNoData.setVisibility(View.VISIBLE);
+            recycleview.setVisibility(View.GONE);
+        }
+
     }
 
     @Override
@@ -197,6 +216,25 @@ public class CarActivity extends BaseActivity implements CarContract.View, Navig
     @Override
     public void showNoNet() {
         ll404.setVisibility(View.VISIBLE);
+        cartNoData.setVisibility(View.GONE);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1 && resultCode == 2) {
+            //获取购物车列表
+            mPresenter.getData();
+
+            shopCartSelectAll.setChecked(false);
+            for (int i = 0; i < DataTransfer.getInstance().cartGoods.size(); i++) {
+                CarGoodsAdapter.ViewHolder childViewHolder = (CarGoodsAdapter.ViewHolder) recycleview.getChildViewHolder(recycleview.getChildAt(i));
+                childViewHolder.checkbox.setChecked(false);
+            }
+
+            DataTransfer.getInstance().cartGoods.clear();
+            upDate(DataTransfer.getInstance().cartGoods);
+        }
     }
 
     @Override
