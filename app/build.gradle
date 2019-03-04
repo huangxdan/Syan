@@ -35,6 +35,10 @@ android {
         javaMaxHeapSize "4g"
     }
 
+    defaultConfig {
+        multiDexEnabled true
+    }
+
     sourceSets {
         main {
             jniLibs.srcDirs = ['libs']
@@ -45,28 +49,28 @@ android {
 
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    testCompile 'junit:junit:4.12'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    testImplementation 'junit:junit:4.12'
 
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
-    compile 'com.android.support:appcompat-v7:27.1.1'
-    compile 'com.android.support:recyclerview-v7:27.1.1'
-    compile 'com.android.support:support-v4:27.1.1'
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.android.support:recyclerview-v7:27.1.1'
+    implementation 'com.android.support:support-v4:27.1.1'
 
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    compile 'com.android.support:multidex:1.0.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    implementation 'com.android.support:multidex:1.0.0'
     // Dagger dependencies
     annotationProcessor "com.google.dagger:dagger-compiler:$rootProject.daggerVersion"
-    compile "com.google.dagger:dagger:$rootProject.daggerVersion"
+    implementation "com.google.dagger:dagger:$rootProject.daggerVersion"
     // retrofit and okHttp
-    compile "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
-    compile "com.squareup.retrofit2:converter-gson:$rootProject.retrofitVersion"
-    compile "com.squareup.retrofit2:adapter-rxjava:$rootProject.retrofitVersion"
-    compile "com.squareup.okhttp3:okhttp:$rootProject.okhttpVersion"
-    compile "com.squareup.okhttp3:logging-interceptor:$rootProject.okhttpVersion"
+    implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$rootProject.retrofitVersion"
+    implementation "com.squareup.retrofit2:adapter-rxjava:$rootProject.retrofitVersion"
+    implementation "com.squareup.okhttp3:okhttp:$rootProject.okhttpVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.okhttpVersion"
     //RxJava
     // Because RxAndroid releases are few and far between, it is recommended you also
     // explicitly depend on RxJava's latest version for bug fixes and new features.
@@ -74,26 +78,26 @@ dependencies {
     implementation "com.jakewharton:butterknife:$rootProject.butterknife"
     annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.butterknife"
     //RxBinding
-    compile 'com.jakewharton.rxbinding:rxbinding:0.4.0'
+    implementation 'com.jakewharton.rxbinding:rxbinding:0.4.0'
 
     //greenDAO
-//    compile "org.greenrobot:greendao:$rootProject.greenDAOVersion"
+//    implementation "org.greenrobot:greendao:$rootProject.greenDAOVersion"
     //glide
-    compile "com.github.bumptech.glide:glide:$rootProject.glideVersion"
-    compile "com.github.castorflex.smoothprogressbar:library-circular:$rootProject.circularVersion"
-    compile "org.greenrobot:eventbus:$rootProject.eventbusVersion"
+    implementation "com.github.bumptech.glide:glide:$rootProject.glideVersion"
+    implementation "com.github.castorflex.smoothprogressbar:library-circular:$rootProject.circularVersion"
+    implementation "org.greenrobot:eventbus:$rootProject.eventbusVersion"
     //rxjava
-    compile "io.reactivex:rxandroid:$rootProject.rxAndroidVersion"
-    compile "io.reactivex:rxjava:$rootProject.rxJavaVersion"
+    implementation "io.reactivex:rxandroid:$rootProject.rxAndroidVersion"
+    implementation "io.reactivex:rxjava:$rootProject.rxJavaVersion"
 
-//    compile project(path: ':pullrefresh')
-//    compile project(path: ':hfpullrefresh')
+//    implementation project(path: ':pullrefresh')
+//    implementation project(path: ':hfpullrefresh')
 
     //tab标签
-    compile 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.0@aar'
+    implementation 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.0@aar'
 
     //沉浸状态栏
-    compile 'com.gyf.barlibrary:barlibrary:2.3.0'
+    implementation 'com.gyf.barlibrary:barlibrary:2.3.0'
 }
 
 //greendao {
