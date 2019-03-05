@@ -43,7 +43,8 @@ public class OrderAdapter extends RecyclerView.Adapter {
 
         final MyOrderList myOrderList = mList.get(position);
 
-        holder.tv_state.setText(myOrderList.getOrderInfo());
+        //订单状态
+        holder.tv_state.setText(myOrderList.getOrderState());
 
         //单个订单的商品列表不需要滑动，所以在这里禁止掉item的滑动事件
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false) {

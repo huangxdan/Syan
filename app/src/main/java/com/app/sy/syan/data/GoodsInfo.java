@@ -16,8 +16,10 @@ public class GoodsInfo implements Serializable{
     private String tedian;
     private String yongfa;
 
-    //           		--商品价格
+    //           		--商品会员价格
     private double productPrice;
+    //           		--商品原价
+    private double priceMax;
     //          		--库存数量
     private String productNumber;
 
@@ -72,6 +74,14 @@ public class GoodsInfo implements Serializable{
 
     public void setProductPrice(double productPrice) {
         this.productPrice = productPrice;
+    }
+
+    public double getPriceMax() {
+        return priceMax;
+    }
+
+    public void setPriceMax(double priceMax) {
+        this.priceMax = priceMax;
     }
 
     public String getProductNumber() {

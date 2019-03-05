@@ -4,6 +4,7 @@ import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Paint;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.os.Handler;
@@ -69,6 +70,8 @@ public class GoodsDetailActivity extends BaseActivity implements GoodsDetailCont
     TextView tvGoodsName;
     @BindView(R.id.tv_goods_price)
     TextView tvGoodsPrice;
+    @BindView(R.id.tv_original_price)
+    TextView tvOriginPrice;
     @BindView(R.id.tv_goods_info_title)
     TextView tvGoodsInfoTitle;
     //    @BindView(R.id.tv_goods_info)
@@ -210,7 +213,12 @@ public class GoodsDetailActivity extends BaseActivity implements GoodsDetailCont
             ivGoods.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
         }
         tvGoodsName.setText(goodsInfo.getProductName());
-        tvGoodsPrice.setText(NumberUtil.getDoubleString(goodsInfo.getProductPrice()));
+        //会员价
+        tvGoodsPrice.setText("￥ " + NumberUtil.getDoubleString(goodsInfo.getProductPrice()));
+        //原价
+        tvOriginPrice.setText(NumberUtil.getDoubleString(goodsInfo.getPriceMax()));
+        //中画线,设置中划线并加清晰
+        tvOriginPrice.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG | Paint.ANTI_ALIAS_FLAG);
 //        tvGoodsInfo.setText(goodsInfo.getProductInfo());
         if (!TextUtils.isEmpty(goodsInfo.getChengfen())) {
             rlChengfen.setVisibility(View.VISIBLE);

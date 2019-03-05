@@ -12,6 +12,7 @@ import java.util.List;
 public class MyOrderList {
     private String orderId;
     private String orderInfo;
+    private String orderState;
     private List<MyOrderInfo> productList;
 
     public String getOrderId() {
@@ -24,6 +25,14 @@ public class MyOrderList {
 
     public String getOrderInfo() {
         return orderInfo;
+    }
+
+    public String getOrderState() {
+        return orderState;
+    }
+
+    public void setOrderState(String orderState) {
+        this.orderState = orderState;
     }
 
     public void setOrderInfo(String orderInfo) {
