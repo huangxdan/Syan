@@ -214,9 +214,9 @@ public class GoodsDetailActivity extends BaseActivity implements GoodsDetailCont
         }
         tvGoodsName.setText(goodsInfo.getProductName());
         //会员价
-        tvGoodsPrice.setText("￥ " + NumberUtil.getDoubleString(goodsInfo.getProductPrice()));
+        tvGoodsPrice.setText(NumberUtil.getDoubleString(goodsInfo.getProductPrice()));
         //原价
-        tvOriginPrice.setText(NumberUtil.getDoubleString(goodsInfo.getPriceMax()));
+        tvOriginPrice.setText("￥" + NumberUtil.getDoubleString(goodsInfo.getPriceMax()));
         //中画线,设置中划线并加清晰
         tvOriginPrice.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG | Paint.ANTI_ALIAS_FLAG);
 //        tvGoodsInfo.setText(goodsInfo.getProductInfo());
