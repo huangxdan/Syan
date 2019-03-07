@@ -56,7 +56,7 @@ public interface SyanServiceApi {
     Observable<ResponseBody> productDetailCartCount(@Body CharacterBody characterBody);
 
     //商品详情页 加入购物车操作
-    @POST("app/getCartNumTotal")
+    @POST("app/updateCartNum")
     Observable<ResponseBody> updateCartNum(@Body UpdateCartNumBody updateCartNumBody);
 
     //获取购物车所有商品
