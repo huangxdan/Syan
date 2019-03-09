@@ -43,6 +43,8 @@ public class OrderAdapter extends RecyclerView.Adapter {
 
         final MyOrderList myOrderList = mList.get(position);
 
+        //订单号
+        holder.order_id.setText("订单号："+myOrderList.getOrderId());
         //订单状态
         holder.tv_state.setText(myOrderList.getOrderState());
 
@@ -86,13 +88,14 @@ public class OrderAdapter extends RecyclerView.Adapter {
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView tv_state, tv_total_count, tv_all_price;
+        public TextView order_id, tv_state, tv_total_count, tv_all_price;
         public RecyclerView recycleview;
         public View divider_view;
 
         public ViewHolder(View view) {
             super(view);
             tv_state = (TextView) view.findViewById(R.id.tv_state);
+            order_id = (TextView) view.findViewById(R.id.order_id);
             tv_total_count = (TextView) view.findViewById(R.id.tv_total_count);
             tv_all_price = (TextView) view.findViewById(R.id.tv_all_price);
             recycleview = (RecyclerView) view.findViewById(R.id.recycleview);
